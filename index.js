@@ -1,74 +1,46 @@
-jQuery(() => {
-
-    console.log("🎰 适度赌博，赌狗万岁 已启动");
-
-
-    // 创建按钮
-    const button = `
-    <div id="mg-casino-button"
-         class="list-group-item flex-container flexGap5">
-         
-        🎰 适度赌博，赌狗万岁
-
-    </div>
-    `;
+import { loadData } from "./src/core/storage.js";
+import { getCurrentCharacter } from "./src/character/loader.js";
 
 
-    // 加入扩展菜单
-    $("#extensionsMenu").append(button);
+jQuery(async()=>{
 
 
-    // 点击事件
-    $("#mg-casino-button").on(
-        "click",
-        () => {
-
-            $("#mg-casino-panel")
-            .toggle();
-
-        }
+    console.log(
+        "🎰 适度赌博，赌狗万岁 启动"
     );
 
 
-    // 创建面板
-    const panel = `
-
-    <div id="mg-casino-panel">
-
-        <h2>
-        🎰 适度赌博，赌狗万岁
-        </h2>
+    //读取玩家数据
+    const data = loadData();
 
 
-        <p>
-        欢迎来到虚拟赌场
-        </p>
+    console.log(
+        "当前筹码:",
+        data.coins
+    );
 
 
-        <p>
-        筹码:
-        <span id="mg-coins">
-        100
-        </span>
-        </p>
+    //读取当前角色
+    try{
+
+        const character =
+        getCurrentCharacter();
 
 
-        <button>
-        每日签到
-        </button>
+        console.log(
+            "当前角色:",
+            character.name
+        );
 
 
-        <button>
-        幸运转盘
-        </button>
+    }catch(e){
 
+        console.log(
+            "角色读取失败",
+            e
+        );
 
-    </div>
-
-    `;
-
-
-    $("body").append(panel);
+    }
 
 
 });
