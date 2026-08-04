@@ -2,19 +2,6 @@ const ICON =
 "https://i.postimg.cc/dVLjqnXs/IMG-7085.png";
 
 
-let dragging = false;
-
-let moved = false;
-
-let startX = 0;
-
-let startY = 0;
-
-let originX = 0;
-
-let originY = 0;
-
-
 
 export function createCasinoUI(){
 
@@ -25,129 +12,125 @@ export function createCasinoUI(){
 
 
 
-$("body").append(`
+    $("body").append(`
 
 
 <div id="mg-root">
 
 
-<div id="mg-orb">
 
-<img src="${ICON}">
+    <!-- 悬浮按钮 -->
 
-</div>
+    <div id="mg-orb">
 
+        <img src="${ICON}">
 
+    </div>
 
 
-<div id="mg-panel">
 
 
 
+    <!-- 赌场窗口 -->
 
+    <div id="mg-panel">
 
-<div class="casino-header">
 
 
-<div class="casino-name">
+        <div class="casino-top">
 
-🎰 SILLY CASINO
 
-</div>
 
+            <div class="casino-top-item">
 
-<button id="mg-close">
+                <img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
 
-×
+            </div>
 
-</button>
 
 
-</div>
+            <div class="casino-top-item">
 
+                <img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
 
+            </div>
 
 
 
 
-<div class="casino-games">
 
+            <div class="casino-top-item casino-player">
 
 
-<button data-game="roulette">
 
-🎡轮盘
+                <div class="casino-username">
 
-</button>
+                    PLAYER
 
+                </div>
 
 
-<button data-game="poker">
 
-🃏扑克
+                <div class="casino-avatar">
 
-</button>
+                    👤
 
+                </div>
 
 
 
+                <div class="casino-chip">
 
+                    🟡1000
 
-<div class="casino-user">
+                </div>
 
 
-<div class="casino-avatar">
 
-👤
+            </div>
 
-</div>
 
 
 
-<div>
 
 
-<div class="casino-username">
+            <div class="casino-top-item">
 
-PLAYER
+                <img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
 
-</div>
+            </div>
 
 
-<div class="casino-chip">
 
-🟡1000
 
-</div>
+            <div class="casino-top-item">
 
+                <img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
 
-</div>
+            </div>
 
 
-</div>
 
 
+        </div>
 
 
 
 
-<button data-game="slot">
 
-🎰老虎机
 
-</button>
 
+        <!-- 游戏区域 -->
 
 
-<button data-game="dice">
+        <div class="casino-main">
 
-🎲骰子
 
-</button>
+            游戏展示区域
 
 
+        </div>
 
-</div>
 
 
 
@@ -155,79 +138,71 @@ PLAYER
 
 
 
+        <!-- 底部 -->
 
-<div class="casino-main">
 
+        <div class="casino-bottom">
 
-<h2>
 
-游戏大厅
 
-</h2>
+            <div class="casino-bottom-item">
 
 
-<p>
+                <img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
 
-请选择游戏
 
-</p>
+            </div>
 
 
-</div>
 
 
+            <div class="casino-bottom-item">
 
 
+                <img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
 
 
+            </div>
 
-<div class="casino-extra">
 
 
-<button data-game="stock">
 
-📈股票
+            <div class="casino-bottom-item">
 
-</button>
 
+                <img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
 
 
-<button data-game="crypto">
+            </div>
 
-💎虚拟货币
 
-</button>
 
 
+            <div class="casino-bottom-item">
 
-<button data-game="work">
 
-🛠打工
+                <img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 
-</button>
 
+            </div>
 
 
 
-<button data-game="setting">
 
-⚙设置
+        </div>
 
-</button>
 
 
 
-</div>
 
 
+    </div>
 
 
 
 
 </div>
 
-
-</div>
 
 
 `);
@@ -235,29 +210,11 @@ PLAYER
 
 
 
-
-
-$("#mg-panel").hide();
-
+    $("#mg-panel").hide();
 
 
 
-bindOrb();
-
-
-
-bindGames();
-
-
-
-
-$("#mg-close").on(
-"click",
-()=>{
-
-$("#mg-panel").hide();
-
-});
+    bindCasinoOrb();
 
 
 
@@ -269,185 +226,175 @@ $("#mg-panel").hide();
 
 
 
-function bindGames(){
 
-
-$(".casino-games button")
-.on(
-"click",
-function(){
-
-
-let game =
-$(this).data("game");
+function bindCasinoOrb(){
 
 
 
-$("#game-display").html(`
-
-<h2>
-
-${game}
-
-</h2>
-
-
-<p>
-
-游戏模块准备中
-
-</p>
-
-`);
+    const orb =
+    document.querySelector("#mg-orb");
 
 
 
-});
+    if(!orb){
+        return;
+    }
+
+
+
+    let dragging=false;
+
+    let moved=false;
+
+    let startX=0;
+
+    let startY=0;
+
+    let originX=0;
+
+    let originY=0;
+
+
+
+
+
+    orb.addEventListener(
+        "pointerdown",
+        e=>{
+
+
+            dragging=true;
+
+            moved=false;
+
+
+
+            startX=e.clientX;
+
+            startY=e.clientY;
+
+
+
+            let rect=
+            orb.getBoundingClientRect();
+
+
+
+            originX=rect.left;
+
+            originY=rect.top;
+
+
+
+            orb.setPointerCapture(
+                e.pointerId
+            );
+
+        }
+    );
+
+
+
+
+
+
+
+    orb.addEventListener(
+        "pointermove",
+        e=>{
+
+
+            if(!dragging){
+                return;
+            }
+
+
+
+            let dx=
+            e.clientX-startX;
+
+
+
+            let dy=
+            e.clientY-startY;
+
+
+
+            if(
+                Math.abs(dx)+Math.abs(dy)>8
+            ){
+
+                moved=true;
+
+            }
+
+
+
+            if(!moved){
+                return;
+            }
+
+
+
+
+            orb.style.left=
+            originX+dx+"px";
+
+
+
+            orb.style.top=
+            originY+dy+"px";
+
+
+
+            orb.style.right="auto";
+
+            orb.style.bottom="auto";
+
+
+        }
+    );
+
+
+
+
+
+
+
+    orb.addEventListener(
+        "pointerup",
+        ()=>{
+
+
+            dragging=false;
+
+
+
+            if(!moved){
+
+
+                $("#mg-panel").show();
+
+
+            }
+
+
+        }
+    );
+
+
+
 
 
 }
-
-
-
-
-
-
-
-function bindOrb(){
-
-
-const orb =
-document.querySelector("#mg-orb");
-
-
-if(!orb)return;
-
-
-
-orb.addEventListener(
-"pointerdown",
-(e)=>{
-
-
-dragging=true;
-
-moved=false;
-
-
-startX=e.clientX;
-
-startY=e.clientY;
-
-
-
-const rect =
-orb.getBoundingClientRect();
-
-
-originX=rect.left;
-
-originY=rect.top;
-
-
-
-orb.setPointerCapture(
-e.pointerId
-);
-
-
-
-});
-
-
-
-
-
-
-orb.addEventListener(
-"pointermove",
-(e)=>{
-
-
-if(!dragging)return;
-
-
-
-let dx =
-e.clientX-startX;
-
-
-let dy =
-e.clientY-startY;
-
-
-
-if(
-Math.sqrt(dx*dx+dy*dy)>8
-){
-
-moved=true;
-
-}
-
-
-
-if(!moved)return;
-
-
-
-orb.style.left =
-originX+dx+"px";
-
-
-orb.style.top =
-originY+dy+"px";
-
-
-orb.style.right="auto";
-
-orb.style.bottom="auto";
-
-
-
-});
-
-
-
-
-
-
-
-orb.addEventListener(
-"pointerup",
-()=>{
-
-
-dragging=false;
-
-
-
-if(!moved){
-
-
-$("#mg-panel").show();
-
-
-}
-
-
-
-});
-
-
-}
-
-
 
 
 
 
 export function removeCasinoUI(){
 
-$("#mg-root").remove();
+
+    $("#mg-root").remove();
+
 
 }
