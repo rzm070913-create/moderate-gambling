@@ -1,115 +1,192 @@
 export function openCasinoWindow(){
 
 
-
-$("#mg-casino-window").remove();
-
-
-
-const context =
-globalThis.SillyTavern
-?.getContext
-?.();
+    $("#mg-casino-window").remove();
 
 
 
-const username =
-context?.name
-||
-"玩家";
+    let username="玩家";
+
+
+    try{
+
+        const context =
+        SillyTavern.getContext();
+
+
+        username =
+        context.name
+        ||
+        "玩家";
+
+
+    }
+    catch(e){
+
+        console.log(
+            "用户信息读取失败",
+            e
+        );
+
+    }
 
 
 
-const html=`
+
+    const html = `
 
 
 <div id="mg-casino-window">
 
 
-<div class="mg-title">
+<div class="mg-casino-header">
 
 
-适度赌博，赌狗万岁
+    <div>
+    🎰 Lucky Palace
+    </div>
 
 
-<button id="mg-window-close">
-
-×
-
-</button>
+    <button id="mg-window-close">
+    ×
+    </button>
 
 
 </div>
 
 
 
-<div class="mg-user">
+<div class="mg-player">
 
 
- ${username}
+<div class="mg-avatar">
+
+👤
+
+</div>
+
+
+<div>
+
+<b>
+${username}
+</b>
 
 
 <br>
 
 
- 筹码:
-100
+<span class="chip">
+
+🟡 1000
+
+</span>
+
+
+</div>
 
 
 </div>
 
 
 
-<hr>
+<div class="chip-display">
+
+
+🟡 1000
+
+
+<div>
+CHIPS
+</div>
+
+
+</div>
+
+
+
+<div class="line"></div>
 
 
 
 <h3>
-ALLIN
+🎮 游戏大厅
 </h3>
 
 
-<button>
-🎰老虎机
-</button>
+
+<div class="game-grid">
 
 
 <button>
-🎲骰子
+🎰
+<br>
+老虎机
 </button>
+
 
 
 <button>
-🏇赛马
+🃏
+<br>
+扑克
 </button>
+
 
 
 <button>
-🃏扑克
+🏇
+<br>
+赛马
 </button>
+
+
+
+<button>
+🎲
+<br>
+骰子
+</button>
+
+
+
+</div>
+
+
+
+<div class="line"></div>
 
 
 
 <h3>
-福利中心
+🎁 福利中心
 </h3>
 
 
-<button>
+<button class="reward">
+
 每日签到
+
+</button>
+
+
+<button class="reward">
+
+幸运转盘
+
 </button>
 
 
 
 </div>
+
 
 
 `;
 
 
 
-$("body")
-.append(html);
+$("body").append(html);
 
 
 
@@ -118,10 +195,8 @@ $("#mg-window-close")
 "click",
 ()=>{
 
-
 $("#mg-casino-window")
 .remove();
-
 
 }
 );
