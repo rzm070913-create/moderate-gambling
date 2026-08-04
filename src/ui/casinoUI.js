@@ -25,200 +25,239 @@ export function createCasinoUI(){
 
 
 
-    $("body").append(`
+$("body").append(`
+
 
 <div id="mg-root">
 
 
-    <div id="mg-orb">
+<div id="mg-orb">
 
-        <img src="${ICON}">
+<img src="${ICON}">
 
-    </div>
+</div>
 
 
 
-    <div id="mg-panel">
 
+<div id="mg-panel">
 
-        <div class="casino-header">
 
 
-            <div class="casino-name">
 
-                🎰 SILLY CASINO
 
-            </div>
+<div class="casino-header">
 
 
-            <button id="mg-close">
+<div class="casino-name">
 
-                ×
+🎰 SILLY CASINO
 
-            </button>
+</div>
 
 
-        </div>
+<button id="mg-close">
 
+×
 
+</button>
 
 
+</div>
 
-        <div class="casino-user">
 
 
-            <div class="casino-avatar">
 
-                👤
 
-            </div>
 
+<div class="casino-games">
 
 
-            <div>
 
+<button data-game="roulette">
 
-                <div class="casino-username">
+🎡轮盘
 
-                    PLAYER
+</button>
 
-                </div>
 
 
-                <div class="casino-chip">
+<button data-game="poker">
 
-                    🟡 1000
+🃏扑克
 
-                </div>
+</button>
 
 
-            </div>
 
 
-        </div>
 
 
+<div class="casino-user">
 
 
+<div class="casino-avatar">
 
-        <div class="casino-games">
+👤
 
+</div>
 
-            <button>
 
-                🎡轮盘
 
-            </button>
+<div>
 
 
-            <button>
+<div class="casino-username">
 
-                🃏扑克
+PLAYER
 
-            </button>
+</div>
 
 
-            <button>
+<div class="casino-chip">
 
-                🎰老虎机
+🟡1000
 
-            </button>
+</div>
 
 
-            <button>
+</div>
 
-                🎲骰子
 
-            </button>
+</div>
 
 
 
-        </div>
 
 
 
+<button data-game="slot">
 
+🎰老虎机
 
-        <div class="casino-main">
+</button>
 
 
-            <h2>
 
-                游戏大厅
+<button data-game="dice">
 
-            </h2>
+🎲骰子
 
-
-            <p>
-
-                请选择游戏
-
-            </p>
-
-
-
-        </div>
-
-
-
-
-
-        <div class="casino-extra">
-
-
-            <button>
-
-                📈股票
-
-            </button>
-
-
-            <button>
-
-                💎虚拟货币
-
-            </button>
-
-
-            <button>
-
-                🛠打工
-
-            </button>
-
-
-
-        </div>
-
-
-
-    </div>
+</button>
 
 
 
 </div>
+
+
+
+
+
+
+
+
+<div class="casino-main">
+
+
+<h2>
+
+游戏大厅
+
+</h2>
+
+
+<p>
+
+请选择游戏
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="casino-extra">
+
+
+<button data-game="stock">
+
+📈股票
+
+</button>
+
+
+
+<button data-game="crypto">
+
+💎虚拟货币
+
+</button>
+
+
+
+<button data-game="work">
+
+🛠打工
+
+</button>
+
+
+
+
+<button data-game="setting">
+
+⚙设置
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
 
 `);
 
 
 
 
-    $("#mg-panel").hide();
+
+
+$("#mg-panel").hide();
 
 
 
-    bindOrb();
+
+bindOrb();
 
 
 
-    $("#mg-close").on(
-        "click",
-        ()=>{
+bindGames();
 
-            $("#mg-panel").hide();
 
-        }
-    );
+
+
+$("#mg-close").on(
+"click",
+()=>{
+
+$("#mg-panel").hide();
+
+});
 
 
 
@@ -229,154 +268,175 @@ export function createCasinoUI(){
 
 
 
+
+function bindGames(){
+
+
+$(".casino-games button")
+.on(
+"click",
+function(){
+
+
+let game =
+$(this).data("game");
+
+
+
+$("#game-display").html(`
+
+<h2>
+
+${game}
+
+</h2>
+
+
+<p>
+
+游戏模块准备中
+
+</p>
+
+`);
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
 function bindOrb(){
 
 
-    const orb =
-    document.querySelector(
-        "#mg-orb"
-    );
+const orb =
+document.querySelector("#mg-orb");
 
 
+if(!orb)return;
 
-    if(!orb){
-        return;
-    }
 
 
+orb.addEventListener(
+"pointerdown",
+(e)=>{
 
-    orb.addEventListener(
-        "pointerdown",
-        (e)=>{
 
+dragging=true;
 
-            dragging = true;
+moved=false;
 
-            moved = false;
 
+startX=e.clientX;
 
-            startX = e.clientX;
+startY=e.clientY;
 
-            startY = e.clientY;
 
 
+const rect =
+orb.getBoundingClientRect();
 
-            const rect =
-            orb.getBoundingClientRect();
 
+originX=rect.left;
 
-            originX =
-            rect.left;
+originY=rect.top;
 
 
-            originY =
-            rect.top;
 
+orb.setPointerCapture(
+e.pointerId
+);
 
 
-            orb.setPointerCapture(
-                e.pointerId
-            );
 
+});
 
-        }
-    );
 
 
 
 
 
+orb.addEventListener(
+"pointermove",
+(e)=>{
 
-    orb.addEventListener(
-        "pointermove",
-        (e)=>{
 
+if(!dragging)return;
 
-            if(!dragging){
-                return;
-            }
 
 
+let dx =
+e.clientX-startX;
 
-            let dx =
-            e.clientX - startX;
 
+let dy =
+e.clientY-startY;
 
-            let dy =
-            e.clientY - startY;
 
 
+if(
+Math.sqrt(dx*dx+dy*dy)>8
+){
 
-            if(
-                Math.sqrt(
-                    dx*dx + dy*dy
-                ) > 8
-            ){
+moved=true;
 
-                moved = true;
+}
 
-            }
 
 
+if(!moved)return;
 
-            if(!moved){
-                return;
-            }
 
 
+orb.style.left =
+originX+dx+"px";
 
 
+orb.style.top =
+originY+dy+"px";
 
-            orb.style.left =
-            originX + dx + "px";
 
+orb.style.right="auto";
 
-            orb.style.top =
-            originY + dy + "px";
+orb.style.bottom="auto";
 
 
-            orb.style.right =
-            "auto";
 
+});
 
-            orb.style.bottom =
-            "auto";
 
 
 
-        }
-    );
 
 
 
+orb.addEventListener(
+"pointerup",
+()=>{
 
 
+dragging=false;
 
 
-    orb.addEventListener(
-        "pointerup",
-        ()=>{
 
+if(!moved){
 
-            dragging = false;
 
+$("#mg-panel").show();
 
 
-            // 没移动 = 点击
+}
 
-            if(!moved){
 
 
-                $("#mg-panel")
-                .show();
-
-
-            }
-
-
-        }
-    );
-
+});
 
 
 }
@@ -388,8 +448,6 @@ function bindOrb(){
 
 export function removeCasinoUI(){
 
-
-    $("#mg-root").remove();
-
+$("#mg-root").remove();
 
 }
