@@ -75,9 +75,13 @@ export function createCasinoUI(data, character){
     </div>
 
     `;
+export function openCasinoUI(data, character){
+
+    $("#mg-casino-window").remove();
 
 
-    $("body").append(html);
-
+    $("body").append(
+        createHTML(data, character)
+    );
 
 }
