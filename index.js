@@ -1,7 +1,6 @@
 import { loadData } from "./src/core/storage.js";
 import { getCurrentCharacter } from "./src/character/loader.js";
-
-
+import { createCasinoUI } from "./src/ui.js";
 jQuery(async()=>{
 
 
@@ -31,7 +30,10 @@ jQuery(async()=>{
             "当前角色:",
             character.name
         );
-
+createCasinoUI(
+    data,
+    character
+);
 
     }catch(e){
 
