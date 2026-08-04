@@ -1,1 +1,28 @@
+#mg-casino-panel{
 
+    display:none;
+
+    position:fixed;
+
+    top:100px;
+
+    right:100px;
+
+    width:350px;
+
+    padding:20px;
+
+    background:#222;
+
+    border-radius:15px;
+
+    z-index:9999;
+
+}
+
+
+#mg-casino-button{
+
+    cursor:pointer;
+
+}
