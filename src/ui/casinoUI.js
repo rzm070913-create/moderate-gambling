@@ -98,7 +98,7 @@ $("body").append(`
 
 <div class="casino-avatar">
 
-👤
+<img id="mg-user-avatar">
 
 </div>
 
@@ -233,7 +233,16 @@ PLAYER
 `);
 
 
+let userAvatar = $("#user_avatar").attr("src");
 
+if(userAvatar){
+
+    $("#mg-user-avatar").attr(
+        "src",
+        userAvatar
+    );
+
+}
 
 
 
