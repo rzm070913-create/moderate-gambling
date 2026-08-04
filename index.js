@@ -1,15 +1,21 @@
-import { initCasinoUI } from "./ui.js";
+import { createCasinoUI, removeCasinoUI } from "./src/ui/casinoUI.js";
 
 
 console.log("🎰 适度赌博，赌狗万岁加载");
 
 
-const SETTINGS_KEY = "mg_settings";
+
+const SETTINGS_KEY =
+"MG_SETTINGS";
+
 
 
 let settings = {
+
     showOrb:true
+
 };
+
 
 
 
@@ -24,7 +30,10 @@ function loadSettings(){
     if(data){
 
         settings =
-        JSON.parse(data);
+        Object.assign(
+            settings,
+            JSON.parse(data)
+        );
 
     }
 
@@ -43,19 +52,25 @@ function saveSettings(){
 
 
 
-function createExtensionSetting(){
+
+function initExtensionPanel(){
 
 
-    const box =
+    const container =
     document.querySelector(
         "#extensions_settings2"
+    )
+    ||
+    document.querySelector(
+        "#extensions_settings"
     );
 
 
-    if(!box){
+
+    if(!container){
 
         setTimeout(
-            createExtensionSetting,
+            initExtensionPanel,
             1000
         );
 
@@ -67,7 +82,7 @@ function createExtensionSetting(){
 
     if(
         document.querySelector(
-            "#mg-setting-box"
+            "#mg-extension-setting"
         )
     ){
 
@@ -77,18 +92,23 @@ function createExtensionSetting(){
 
 
 
+
     const div =
-    document.createElement("div");
+    document.createElement(
+        "div"
+    );
+
 
 
     div.id =
-    "mg-setting-box";
+    "mg-extension-setting";
 
 
 
     div.innerHTML = `
 
 <div class="inline-drawer">
+
 
 <div class="inline-drawer-toggle inline-drawer-header">
 
@@ -106,7 +126,7 @@ function createExtensionSetting(){
 
 <input 
 type="checkbox"
-id="mg-orb-toggle">
+id="mg-orb-switch">
 
 显示赌场悬浮窗
 
@@ -122,53 +142,56 @@ id="mg-orb-toggle">
 
 
 
-    box.appendChild(div);
+    container.appendChild(div);
 
 
 
-    const toggle =
+
+    const checkbox =
     document.querySelector(
-        "#mg-orb-toggle"
+        "#mg-orb-switch"
     );
 
 
 
-    toggle.checked =
+    checkbox.checked =
     settings.showOrb;
 
 
 
-    toggle.onchange = ()=>{
+    checkbox.addEventListener(
+        "change",
+        ()=>{
 
 
-        settings.showOrb =
-        toggle.checked;
-
-
-        saveSettings();
+            settings.showOrb =
+            checkbox.checked;
 
 
 
-        if(toggle.checked){
+            saveSettings();
 
-            initCasinoUI();
+
+
+            if(settings.showOrb){
+
+                createCasinoUI();
+
+            }
+            else{
+
+                removeCasinoUI();
+
+            }
+
 
         }
-        else{
-
-            document
-            .querySelector(
-                "#mg-root"
-            )
-            ?.remove();
-
-        }
-
-
-    };
+    );
 
 
 }
+
+
 
 
 
@@ -179,13 +202,13 @@ jQuery(()=>{
     loadSettings();
 
 
-    createExtensionSetting();
+    initExtensionPanel();
 
 
 
     if(settings.showOrb){
 
-        initCasinoUI();
+        createCasinoUI();
 
     }
 
