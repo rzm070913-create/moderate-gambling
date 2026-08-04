@@ -1,40 +1,18 @@
-const STORAGE_KEY = "MG_CASINO_DATA";
+export function getCurrentCharacter(){
 
-
-export function loadData(){
-
-    let data =
-        localStorage.getItem(STORAGE_KEY);
-
-
-    if(data){
-
-        return JSON.parse(data);
-
-    }
+    const context =
+    SillyTavern.getContext();
 
 
     return {
 
-        coins:100,
+        name:
+        context.name || "未知角色",
 
-        games:0,
 
-        wins:0,
-
-        achievements:[]
+        description:
+        context.description || "",
 
     };
-
-}
-
-
-
-export function saveData(data){
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
 
 }
