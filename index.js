@@ -1,16 +1,14 @@
-import { loadData } from "./src/core/storage.js";
-import { getCurrentCharacter } from "./src/character/loader.js";
-import { openCasinoUI } from "./src/ui.js";
-
+import { createFloatingButton } from "./src/ui/floatingButton.js";
+import { openCasinoWindow } from "./src/ui/casinoWindow.js";
 
 
 console.log(
-    "🎰 适度赌博，赌狗万岁 加载中..."
+    "适度赌博，赌狗万岁加载"
 );
 
 
 
-function installCasinoEntry(){
+function installExtensionPanel(){
 
 
     const host =
@@ -21,12 +19,8 @@ function installCasinoEntry(){
 
     if(!host){
 
-        console.log(
-            "未找到扩展设置区域，等待重试"
-        );
-
         setTimeout(
-            installCasinoEntry,
+            installExtensionPanel,
             1000
         );
 
@@ -36,11 +30,9 @@ function installCasinoEntry(){
 
 
 
-    // 防止重复添加
-
     if(
         document.querySelector(
-            "#mg-casino-entry"
+            "#mg-settings"
         )
     ){
 
@@ -50,114 +42,122 @@ function installCasinoEntry(){
 
 
 
-    const entry =
-    document.createElement(
-        "div"
+    const div =
+    document.createElement("div");
+
+
+
+    div.id="mg-settings";
+
+
+
+    div.innerHTML=`
+
+<div class="inline-drawer">
+
+
+<div class="inline-drawer-toggle inline-drawer-header">
+
+<b>
+适度赌博，赌狗万岁
+</b>
+
+</div>
+
+
+
+<div class="inline-drawer-content">
+
+
+<label>
+
+<input 
+type="checkbox"
+id="mg-enable-float">
+
+来一把吧，user！
+
+</label>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+    host.appendChild(div);
+
+
+
+    const checkbox =
+    document.querySelector(
+        "#mg-enable-float"
     );
 
 
 
-    entry.id =
-    "mg-casino-entry";
-
-
-
-    entry.innerHTML = `
-
-    <div class="inline-drawer">
-
-
-        <div class="inline-drawer-toggle inline-drawer-header">
-
-            <b>
-            🎰 适度赌博，赌狗万岁
-            </b>
-
-
-        </div>
-
-
-
-        <div class="inline-drawer-content">
-
-
-            <button
-            id="mg-open-casino"
-            class="menu_button">
-
-                打开赌场大厅
-
-            </button>
-
-
-        </div>
-
-
-    </div>
-
-    `;
-
-
-
-    host.appendChild(entry);
-
-
-
-    document
-    .querySelector(
-        "#mg-open-casino"
+    const enabled =
+    localStorage.getItem(
+        "MG_FLOAT_ENABLE"
     )
-    .addEventListener(
-        "click",
+    ==="true";
+
+
+
+    checkbox.checked=enabled;
+
+
+
+    if(enabled){
+
+        createFloatingButton();
+
+    }
+
+
+
+    checkbox.addEventListener(
+        "change",
         ()=>{
 
 
-            const data =
-            loadData();
+            if(
+                checkbox.checked
+            ){
+
+                localStorage.setItem(
+                    "MG_FLOAT_ENABLE",
+                    "true"
+                );
 
 
-
-            let character;
-
-
-
-            try{
-
-
-                character =
-                getCurrentCharacter();
+                createFloatingButton();
 
 
             }
-            catch(e){
+            else{
 
 
-                character = {
+                localStorage.setItem(
+                    "MG_FLOAT_ENABLE",
+                    "false"
+                );
 
-                    name:
-                    "AI庄家"
 
-                };
+                $("#mg-floating-button")
+                .remove();
 
 
             }
-
-
-
-            openCasinoUI(
-                data,
-                character
-            );
 
 
         }
     );
 
-
-
-    console.log(
-        "🎰 赌场入口安装完成"
-    );
 
 
 }
@@ -167,7 +167,8 @@ function installCasinoEntry(){
 jQuery(()=>{
 
 
-    installCasinoEntry();
+    installExtensionPanel();
+
 
 
 });
