@@ -23,11 +23,17 @@ export function createFloatingButton(){
 
 
     const button =
-    $("#mg-floating-button");
+    document.querySelector(
+        "#mg-floating-button"
+    );
 
 
 
-    //读取位置
+    let drag = null;
+
+
+
+    // 恢复位置
 
     const saved =
     JSON.parse(
@@ -40,200 +46,308 @@ export function createFloatingButton(){
 
     if(saved){
 
-        button.css({
+        button.style.left =
+        saved.x + "px";
 
-            left:saved.x,
-            top:saved.y,
-            right:"auto",
-            bottom:"auto"
 
-        });
+        button.style.top =
+        saved.y + "px";
+
+
+        button.style.right =
+        "auto";
+
+
+        button.style.bottom =
+        "auto";
 
     }
 
 
 
-    let pressTimer=null;
-
-    let dragging=false;
-
-    let moved=false;
-
-
-    let startX=0;
-
-    let startY=0;
-
-
-    let offsetX=0;
-
-    let offsetY=0;
-
-
-
-    button.on(
+    button.addEventListener(
         "pointerdown",
-        function(e){
+        event=>{
 
 
-            startX=e.clientX;
-
-            startY=e.clientY;
-
-
-
-            offsetX=
-            e.clientX-this.offsetLeft;
-
-
-            offsetY=
-            e.clientY-this.offsetTop;
-
-
-
-            moved=false;
-
-
-
-            pressTimer=setTimeout(()=>{
-
-
-                dragging=true;
-
-
-                button.addClass(
-                    "dragging"
-                );
-
-
-            },500);
-
-
-
-        }
-    );
-
-
-
-
-    button.on(
-        "pointermove",
-        function(e){
-
-
-
-            let dx=
-            Math.abs(
-                e.clientX-startX
-            );
-
-
-            let dy=
-            Math.abs(
-                e.clientY-startY
-            );
-
-
-
-            if(dx>10 || dy>10){
-
-                moved=true;
-
-            }
-
-
-
-            if(!dragging)
+            if(event.button !== undefined &&
+               event.button !== 0)
             return;
 
 
 
-            button.css({
-
-                left:
-                e.clientX-offsetX,
-
-
-                top:
-                e.clientY-offsetY,
-
-
-                right:"auto",
-
-                bottom:"auto"
-
-            });
+            const rect =
+            button.getBoundingClientRect();
 
 
 
-        }
-    );
+            button.style.left =
+            rect.left + "px";
+
+
+            button.style.top =
+            rect.top + "px";
+
+
+            button.style.right =
+            "auto";
+
+
+            button.style.bottom =
+            "auto";
 
 
 
+            drag={
 
 
-    button.on(
-        "pointerup",
-        function(){
+                pointerId:
+                event.pointerId,
+
+
+                startX:
+                event.clientX,
+
+
+                startY:
+                event.clientY,
+
+
+                originX:
+                rect.left,
+
+
+                originY:
+                rect.top,
+
+
+                x:
+                rect.left,
+
+
+                y:
+                rect.top,
+
+
+                moved:false
+
+
+            };
 
 
 
-            clearTimeout(
-                pressTimer
+            button.setPointerCapture?.(
+                event.pointerId
             );
 
 
 
-            if(dragging){
-
-
-                dragging=false;
-
-
-
-                button.removeClass(
-                    "dragging"
-                );
+        }
+    );
 
 
 
-                localStorage.setItem(
-
-                    "MG_FLOAT_POS",
-
-                    JSON.stringify({
-
-                        x:
-                        button.position().left,
-
-                        y:
-                        button.position().top
-
-                    })
-
-                );
 
 
-                return;
+    button.addEventListener(
+        "pointermove",
+        event=>{
 
-            }
+
+            if(
+                !drag ||
+                event.pointerId !== drag.pointerId
+            )
+            return;
 
 
 
-            //没有拖动才打开
+            const dx =
+            event.clientX -
+            drag.startX;
 
-            if(!moved){
 
-                openCasinoWindow();
+
+            const dy =
+            event.clientY -
+            drag.startY;
+
+
+
+            if(
+                Math.hypot(dx,dy)>5
+            ){
+
+                drag.moved=true;
 
             }
 
+
+
+            if(!drag.moved)
+            return;
+
+
+
+            let x =
+            drag.originX + dx;
+
+
+            let y =
+            drag.originY + dy;
+
+
+
+            const size =
+            button.offsetWidth;
+
+
+
+            x =
+            Math.max(
+                0,
+                Math.min(
+                    window.innerWidth-size,
+                    x
+                )
+            );
+
+
+            y =
+            Math.max(
+                0,
+                Math.min(
+                    window.innerHeight-size,
+                    y
+                )
+            );
+
+
+
+            button.style.left =
+            x+"px";
+
+
+            button.style.top =
+            y+"px";
+
+
+
+            drag.x=x;
+            drag.y=y;
+
+
+
+            event.preventDefault();
 
 
         }
     );
 
+
+
+
+
+    function finishDrag(event){
+
+
+        if(
+            !drag ||
+            event.pointerId !== drag.pointerId
+        )
+        return;
+
+
+
+        button.releasePointerCapture?.(
+            event.pointerId
+        );
+
+
+
+        const finished =
+        drag;
+
+
+
+        drag=null;
+
+
+
+        if(!finished.moved){
+
+            openCasinoWindow();
+
+            return;
+
+        }
+
+
+
+        // 吸附左右边
+
+
+        const size =
+        button.offsetWidth;
+
+
+        let x =
+        finished.x;
+
+
+
+        if(
+            x + size/2 <
+            window.innerWidth/2
+        ){
+
+            x=12;
+
+        }
+        else{
+
+            x=
+            window.innerWidth-size-12;
+
+        }
+
+
+
+        button.style.left =
+        x+"px";
+
+
+
+        localStorage.setItem(
+
+            "MG_FLOAT_POS",
+
+            JSON.stringify({
+
+                x:x,
+
+                y:finished.y
+
+            })
+
+        );
+
+
+    }
+
+
+
+
+    button.addEventListener(
+        "pointerup",
+        finishDrag
+    );
+
+
+    button.addEventListener(
+        "pointercancel",
+        finishDrag
+    );
 
 
 }
