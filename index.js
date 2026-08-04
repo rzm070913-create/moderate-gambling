@@ -7,7 +7,7 @@ jQuery(async () => {
 
 
     console.log(
-        "🎰 适度赌博，赌狗万岁 加载完成"
+        "🎰 适度赌博，赌狗万岁 已加载"
     );
 
 
@@ -18,7 +18,7 @@ jQuery(async () => {
 
 
 
-    // 创建入口按钮
+    // 添加入口按钮
 
     const button = `
 
@@ -33,34 +33,21 @@ jQuery(async () => {
 
 
 
-    // 添加到扩展菜单
-
-    $("#extensionsMenu")
-    .append(button);
+    $("#extensionsMenu").append(button);
 
 
 
     // 点击打开赌场
 
-    $("#mg-casino-entry")
-    .on(
+    $("#mg-casino-entry").on(
         "click",
-        async function(){
+        async()=>{
 
-
-            console.log(
-                "打开赌场大厅"
-            );
-
-
-            //读取玩家数据
 
             const data =
             loadData();
 
 
-
-            //读取当前角色
 
             let character;
 
@@ -74,23 +61,14 @@ jQuery(async () => {
             }catch(e){
 
 
-                console.log(
-                    "角色读取失败",
-                    e
-                );
-
-
                 character={
-                    name:"无角色",
-                    description:""
+                    name:"AI庄家"
                 };
 
 
             }
 
 
-
-            //打开UI
 
             openCasinoUI(
                 data,
