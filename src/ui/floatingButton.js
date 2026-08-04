@@ -1,37 +1,33 @@
+import { openCasinoWindow } from "./casinoWindow.js";
+
+
 export function createFloatingButton(){
 
 
-
-    if(
-        $("#mg-floating-button").length
-    ){
-
+    if($("#mg-floating-button").length){
         return;
-
     }
 
 
 
-    const button = `
+    $("body").append(`
 
+    <div id="mg-floating-button">
 
-<div id="mg-floating-button">
+        <img src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
 
+    </div>
 
-<img 
-src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
-
-
-</div>
-
-
-`;
+    `);
 
 
 
-    $("body").append(button);
+    const button =
+    $("#mg-floating-button");
 
 
+
+    //读取位置
 
     const saved =
     JSON.parse(
@@ -44,51 +40,30 @@ src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
 
     if(saved){
 
+        button.css({
 
-        $("#mg-floating-button")
-        .css({
-
-            left:saved.x+"px",
-
-            top:saved.y+"px",
-
+            left:saved.x,
+            top:saved.y,
             right:"auto",
-
             bottom:"auto"
 
         });
-
 
     }
 
 
 
-    $("#mg-floating-button")
-    .on(
-        "click",
-        ()=>{
-
-
-            import(
-            "./casinoWindow.js"
-            )
-            .then(
-                module=>{
-
-
-                    module.openCasinoWindow();
-
-
-                }
-            );
-
-
-        }
-    );
-
-
+    let pressTimer=null;
 
     let dragging=false;
+
+    let moved=false;
+
+
+    let startX=0;
+
+    let startY=0;
+
 
     let offsetX=0;
 
@@ -96,23 +71,43 @@ src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
 
 
 
-    $("#mg-floating-button")
-    .on(
-        "mousedown",
+    button.on(
+        "pointerdown",
         function(e){
 
 
-            dragging=true;
+            startX=e.clientX;
+
+            startY=e.clientY;
 
 
-            offsetX =
-            e.clientX -
-            this.offsetLeft;
+
+            offsetX=
+            e.clientX-this.offsetLeft;
 
 
-            offsetY =
-            e.clientY -
-            this.offsetTop;
+            offsetY=
+            e.clientY-this.offsetTop;
+
+
+
+            moved=false;
+
+
+
+            pressTimer=setTimeout(()=>{
+
+
+                dragging=true;
+
+
+                button.addClass(
+                    "dragging"
+                );
+
+
+            },500);
+
 
 
         }
@@ -120,10 +115,32 @@ src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
 
 
 
-    $(document)
-    .on(
-        "mousemove",
+
+    button.on(
+        "pointermove",
         function(e){
+
+
+
+            let dx=
+            Math.abs(
+                e.clientX-startX
+            );
+
+
+            let dy=
+            Math.abs(
+                e.clientY-startY
+            );
+
+
+
+            if(dx>10 || dy>10){
+
+                moved=true;
+
+            }
+
 
 
             if(!dragging)
@@ -131,19 +148,19 @@ src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
 
 
 
-            $("#mg-floating-button")
-            .css({
+            button.css({
 
                 left:
                 e.clientX-offsetX,
 
+
                 top:
                 e.clientY-offsetY,
+
 
                 right:"auto",
 
                 bottom:"auto"
-
 
             });
 
@@ -154,42 +171,64 @@ src="https://i.postimg.cc/dVLjqnXs/IMG-7085.png">
 
 
 
-    $(document)
-    .on(
-        "mouseup",
+
+
+    button.on(
+        "pointerup",
         function(){
 
 
-            if(!dragging)
-            return;
 
-
-
-            dragging=false;
-
-
-
-            localStorage.setItem(
-
-                "MG_FLOAT_POS",
-
-                JSON.stringify({
-
-                    x:
-                    $("#mg-floating-button")
-                    .position()
-                    .left,
-
-
-                    y:
-                    $("#mg-floating-button")
-                    .position()
-                    .top
-
-
-                })
-
+            clearTimeout(
+                pressTimer
             );
+
+
+
+            if(dragging){
+
+
+                dragging=false;
+
+
+
+                button.removeClass(
+                    "dragging"
+                );
+
+
+
+                localStorage.setItem(
+
+                    "MG_FLOAT_POS",
+
+                    JSON.stringify({
+
+                        x:
+                        button.position().left,
+
+                        y:
+                        button.position().top
+
+                    })
+
+                );
+
+
+                return;
+
+            }
+
+
+
+            //没有拖动才打开
+
+            if(!moved){
+
+                openCasinoWindow();
+
+            }
+
 
 
         }
