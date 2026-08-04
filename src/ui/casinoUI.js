@@ -1,203 +1,60 @@
-const ICON =
-"https://i.postimg.cc/dVLjqnXs/IMG-7085.png";
-
-
-
 export function createCasinoUI(){
 
+const html = `
 
-    if(document.querySelector("#mg-root")){
-        return;
-    }
+<div id="mg-casino-window">
 
 
+<div id="casino">
 
-    $("body").append(`
 
+<div class="top">
 
-<div id="mg-root">
 
+<div class="top-item">
+<img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
+</div>
 
 
-    <!-- 悬浮按钮 -->
+<div class="top-item">
+<img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
+</div>
 
-    <div id="mg-orb">
 
-        <img src="${ICON}">
 
-    </div>
+<div class="top-item player-box">
 
 
+<div class="player-name" id="mg-name">
+PLAYER
+</div>
 
 
+<div class="avatar">
 
-    <!-- 赌场窗口 -->
+<img id="mg-avatar">
 
-    <div id="mg-panel">
+</div>
 
 
+<div class="money">
+🟡1000
+</div>
 
-        <div class="casino-top">
 
+</div>
 
 
-            <div class="casino-top-item">
 
-                <img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
+<div class="top-item">
+<img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
+</div>
 
-            </div>
 
 
-
-            <div class="casino-top-item">
-
-                <img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
-
-            </div>
-
-
-
-
-
-            <div class="casino-top-item casino-player">
-
-
-
-                <div class="casino-username">
-
-                    PLAYER
-
-                </div>
-
-
-
-                <div class="casino-avatar">
-
-                    👤
-
-                </div>
-
-
-
-                <div class="casino-chip">
-
-                    🟡1000
-
-                </div>
-
-
-
-            </div>
-
-
-
-
-
-
-            <div class="casino-top-item">
-
-                <img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
-
-            </div>
-
-
-
-
-            <div class="casino-top-item">
-
-                <img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
-
-            </div>
-
-
-
-
-        </div>
-
-
-
-
-
-
-
-        <!-- 游戏区域 -->
-
-
-        <div class="casino-main">
-
-
-            游戏展示区域
-
-
-        </div>
-
-
-
-
-
-
-
-
-        <!-- 底部 -->
-
-
-        <div class="casino-bottom">
-
-
-
-            <div class="casino-bottom-item">
-
-
-                <img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
-
-
-            </div>
-
-
-
-
-            <div class="casino-bottom-item">
-
-
-                <img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
-
-
-            </div>
-
-
-
-
-            <div class="casino-bottom-item">
-
-
-                <img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
-
-
-            </div>
-
-
-
-
-            <div class="casino-bottom-item">
-
-
-                <img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
-
-
-            </div>
-
-
-
-
-        </div>
-
-
-
-
-
-
-    </div>
-
+<div class="top-item">
+<img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
+</div>
 
 
 
@@ -205,196 +62,78 @@ export function createCasinoUI(){
 
 
 
-`);
+
+
+<div class="game-stage">
+
+游戏展示区域
+
+</div>
 
 
 
 
-    $("#mg-panel").hide();
+
+<div class="bottom">
+
+
+<div class="bottom-item">
+<img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
+</div>
+
+
+<div class="bottom-item">
+<img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
+</div>
+
+
+<div class="bottom-item">
+<img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
+</div>
+
+
+<div class="bottom-item">
+<img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
+</div>
+
+
+</div>
 
 
 
-    bindCasinoOrb();
+</div>
 
 
+</div>
+`;
+
+
+
+$("body").append(html);
+
+
+
+let avatar=$("#user_avatar").attr("src");
+
+
+if(avatar){
+
+$("#mg-avatar").attr("src",avatar);
 
 }
 
 
 
+let username=
+$("#user_name").text();
 
 
+if(username){
 
-
-
-function bindCasinoOrb(){
-
-
-
-    const orb =
-    document.querySelector("#mg-orb");
-
-
-
-    if(!orb){
-        return;
-    }
-
-
-
-    let dragging=false;
-
-    let moved=false;
-
-    let startX=0;
-
-    let startY=0;
-
-    let originX=0;
-
-    let originY=0;
-
-
-
-
-
-    orb.addEventListener(
-        "pointerdown",
-        e=>{
-
-
-            dragging=true;
-
-            moved=false;
-
-
-
-            startX=e.clientX;
-
-            startY=e.clientY;
-
-
-
-            let rect=
-            orb.getBoundingClientRect();
-
-
-
-            originX=rect.left;
-
-            originY=rect.top;
-
-
-
-            orb.setPointerCapture(
-                e.pointerId
-            );
-
-        }
-    );
-
-
-
-
-
-
-
-    orb.addEventListener(
-        "pointermove",
-        e=>{
-
-
-            if(!dragging){
-                return;
-            }
-
-
-
-            let dx=
-            e.clientX-startX;
-
-
-
-            let dy=
-            e.clientY-startY;
-
-
-
-            if(
-                Math.abs(dx)+Math.abs(dy)>8
-            ){
-
-                moved=true;
-
-            }
-
-
-
-            if(!moved){
-                return;
-            }
-
-
-
-
-            orb.style.left=
-            originX+dx+"px";
-
-
-
-            orb.style.top=
-            originY+dy+"px";
-
-
-
-            orb.style.right="auto";
-
-            orb.style.bottom="auto";
-
-
-        }
-    );
-
-
-
-
-
-
-
-    orb.addEventListener(
-        "pointerup",
-        ()=>{
-
-
-            dragging=false;
-
-
-
-            if(!moved){
-
-
-                $("#mg-panel").show();
-
-
-            }
-
-
-        }
-    );
-
-
-
-
+$("#mg-name").text(username);
 
 }
 
-
-
-
-export function removeCasinoUI(){
-
-
-    $("#mg-root").remove();
 
 
 }
