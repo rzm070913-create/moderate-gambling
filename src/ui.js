@@ -1,31 +1,24 @@
-export function createCasinoUI(data, character){
+export function openCasinoUI(data, character){
+
 
     const html = `
+
 
     <div id="mg-casino-window">
 
 
-        <div class="mg-title">
+        <div class="mg-header">
 
-        🎰 适度赌博，赌狗万岁
-
-        </div>
-
-
-        <div class="mg-info">
-
-            <p>
-            💰 筹码：
-            <span id="mg-coins">
-            ${data.coins}
+            <span>
+            🎰 适度赌博，赌狗万岁
             </span>
-            </p>
 
 
-            <p>
-            🤖 当前角色：
-            ${character.name}
-            </p>
+            <button id="mg-close">
+
+            ×
+
+            </button>
 
 
         </div>
@@ -35,23 +28,44 @@ export function createCasinoUI(data, character){
         <hr>
 
 
+
+        <p>
+        💰 筹码：
+        <span>
+        ${data.coins}
+        </span>
+        </p>
+
+
+
+        <p>
+        🤖 当前角色：
+        ${character.name}
+        </p>
+
+
+
+        <hr>
+
+
+
         <h3>
         🎮 游戏大厅
         </h3>
 
 
         <button>
-        🎰 老虎老虎机
+        🎰老虎机
         </button>
 
 
         <button>
-        🎲 幸运骰子
+        🎲骰子
         </button>
 
 
         <button>
-        ✊ AI猜拳
+        ✊猜拳
         </button>
 
 
@@ -62,26 +76,41 @@ export function createCasinoUI(data, character){
 
 
         <button>
-        📅 每日签到
+        📅每日签到
         </button>
 
 
         <button>
-        🆘 救济金
+        🆘救济金
         </button>
 
 
 
     </div>
 
+
+
     `;
-export function openCasinoUI(data, character){
-
-    $("#mg-casino-window").remove();
 
 
-    $("body").append(
-        createHTML(data, character)
+
+    $("body").append(html);
+
+
+
+    //关闭按钮
+
+    $("#mg-close").on(
+        "click",
+        ()=>{
+
+
+            $("#mg-casino-window")
+            .remove();
+
+
+        }
     );
+
 
 }
