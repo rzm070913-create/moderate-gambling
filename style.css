@@ -1,42 +1,28 @@
 #mg-casino-window{
-
-
-position:fixed;
-
-top:50%;
-
-left:50%;
-
-transform:translate(-50%,-50%);
-
-
-z-index:999999;
-
-
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:999999;
 }
 
 
 
 #casino{
 
+    width:min(1600px,95vw);
+    height:min(900px,90vh);
 
-width:min(1600px,95vw);
+    background:url(
+    "https://i.postimg.cc/1XwMyGKQ/IMG-7110.png"
+    );
 
-height:min(900px,90vh);
+    background-size:100% 100%;
 
+    display:flex;
+    flex-direction:column;
 
-background:url(
-"https://i.postimg.cc/1XwMyGKQ/IMG-7110.png"
-);
-
-
-background-size:100% 100%;
-
-
-display:flex;
-
-flex-direction:column;
-
+    overflow:hidden;
 
 }
 
@@ -46,160 +32,139 @@ flex-direction:column;
 
 .top{
 
+    height:260px;
 
-height:260px;
+    display:grid;
 
+    grid-template-columns:repeat(5,1fr);
 
-display:grid;
+    align-items:center;
 
-grid-template-columns:repeat(5,1fr);
-
-
-align-items:center;
-
-
-padding:40px 80px 0;
-
+    padding:40px 80px 0;
 
 }
+
 
 
 
 
 .top-item{
 
+    display:flex;
 
-display:flex;
+    justify-content:center;
 
-justify-content:center;
-
-align-items:center;
-
+    align-items:center;
 
 }
+
 
 
 
 
 .top-item img{
 
+    width:240px;
 
-width:240px;
+    height:240px;
 
-height:240px;
-
-
-object-fit:contain;
-
+    object-fit:contain;
 
 }
+
 
 
 
 
 .player-box{
 
+    display:flex;
 
-display:flex;
+    flex-direction:column;
 
-flex-direction:column;
-
-align-items:center;
-
+    align-items:center;
 
 }
+
+
 
 
 
 .player-name{
 
+    color:white;
 
-color:white;
+    font-size:24px;
 
-font-size:22px;
-
+    margin-bottom:5px;
 
 }
+
+
 
 
 
 .avatar{
 
+    width:220px;
 
-width:220px;
+    height:220px;
 
-height:220px;
+    display:flex;
 
+    justify-content:center;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
+    align-items:center;
 
 }
+
+
 
 
 
 .avatar img{
 
+    width:200px;
 
-width:200px;
+    height:200px;
 
-height:200px;
+    border-radius:50%;
 
-
-border-radius:50%;
-
-
-object-fit:cover;
-
-
-border:5px solid gold;
-
+    object-fit:cover;
 
 }
+
 
 
 
 
 .money{
 
+    color:#ffd700;
 
-color:#ffd700;
-
-font-size:22px;
-
+    font-size:22px;
 
 }
 
 
 
 
+
 .game-stage{
 
+    flex:1;
 
-flex:1;
+    display:flex;
 
+    justify-content:center;
 
-display:flex;
+    align-items:center;
 
+    color:white;
 
-justify-content:center;
+    font-size:40px;
 
-
-align-items:center;
-
-
-font-size:40px;
-
-
-color:white;
-
-
-text-shadow:0 4px 8px black;
-
+    text-shadow:0 4px 8px black;
 
 }
 
@@ -209,48 +174,40 @@ text-shadow:0 4px 8px black;
 
 .bottom{
 
+    height:170px;
 
-height:170px;
+    display:grid;
 
+    grid-template-columns:repeat(4,1fr);
 
-display:grid;
+    align-items:center;
 
-
-grid-template-columns:repeat(4,1fr);
-
-
-align-items:center;
-
-
-padding:0 100px 30px;
-
+    padding:0 100px 30px;
 
 }
+
 
 
 
 
 .bottom-item{
 
+    display:flex;
 
-display:flex;
-
-justify-content:center;
-
+    justify-content:center;
 
 }
 
 
 
+
+
 .bottom-item img{
 
+    width:220px;
 
-width:220px;
+    height:140px;
 
-height:140px;
-
-
-object-fit:contain;
-
+    object-fit:contain;
 
 }
