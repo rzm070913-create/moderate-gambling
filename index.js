@@ -1,27 +1,61 @@
-import "./src/ui/casino.css";
-import { initCasinoUI } from "./src/ui/casinoUI.js";
+import { initCasinoUI } from "./ui.js";
 
 
-console.log(
-    "🎰 适度赌博，赌狗万岁加载"
-);
+console.log("🎰 适度赌博，赌狗万岁加载");
+
+
+const SETTINGS_KEY = "mg_settings";
+
+
+let settings = {
+    showOrb:true
+};
 
 
 
-function initExtensionSettings(){
+function loadSettings(){
 
-
-    const host =
-    document.querySelector(
-        "#extensions_settings2, #extensions_settings"
+    const data =
+    localStorage.getItem(
+        SETTINGS_KEY
     );
 
 
+    if(data){
 
-    if(!host){
+        settings =
+        JSON.parse(data);
+
+    }
+
+}
+
+
+
+function saveSettings(){
+
+    localStorage.setItem(
+        SETTINGS_KEY,
+        JSON.stringify(settings)
+    );
+
+}
+
+
+
+function createExtensionSetting(){
+
+
+    const box =
+    document.querySelector(
+        "#extensions_settings2"
+    );
+
+
+    if(!box){
 
         setTimeout(
-            initExtensionSettings,
+            createExtensionSetting,
             1000
         );
 
@@ -33,7 +67,7 @@ function initExtensionSettings(){
 
     if(
         document.querySelector(
-            "#mg-settings"
+            "#mg-setting-box"
         )
     ){
 
@@ -43,33 +77,26 @@ function initExtensionSettings(){
 
 
 
-    const box =
-    document.createElement(
-        "div"
-    );
+    const div =
+    document.createElement("div");
 
 
-    box.id =
-    "mg-settings";
+    div.id =
+    "mg-setting-box";
 
 
 
-    box.innerHTML = `
-
+    div.innerHTML = `
 
 <div class="inline-drawer">
 
-
 <div class="inline-drawer-toggle inline-drawer-header">
-
 
 <b>
 🎰 适度赌博，赌狗万岁
 </b>
 
-
 </div>
-
 
 
 <div class="inline-drawer-content">
@@ -77,14 +104,11 @@ function initExtensionSettings(){
 
 <label>
 
-
 <input 
 type="checkbox"
-id="mg-toggle-orb">
-
+id="mg-orb-toggle">
 
 显示赌场悬浮窗
-
 
 </label>
 
@@ -94,96 +118,54 @@ id="mg-toggle-orb">
 
 </div>
 
-
 `;
 
 
 
-    host.appendChild(box);
+    box.appendChild(div);
 
 
 
-    const checkbox =
+    const toggle =
     document.querySelector(
-        "#mg-toggle-orb"
+        "#mg-orb-toggle"
     );
 
 
 
-    let enabled =
-    localStorage.getItem(
-        "MG_ENABLED"
-    );
+    toggle.checked =
+    settings.showOrb;
 
 
 
-    //第一次安装默认开启
+    toggle.onchange = ()=>{
 
-    if(enabled===null){
 
-        enabled="true";
+        settings.showOrb =
+        toggle.checked;
 
-        localStorage.setItem(
-            "MG_ENABLED",
-            "true"
-        );
 
-    }
+        saveSettings();
 
 
 
-    checkbox.checked =
-    enabled==="true";
+        if(toggle.checked){
 
-
-
-    if(
-        checkbox.checked
-    ){
-
-        initCasinoUI();
-
-    }
-
-
-
-    checkbox.addEventListener(
-        "change",
-        ()=>{
-
-
-            if(
-                checkbox.checked
-            ){
-
-                localStorage.setItem(
-                    "MG_ENABLED",
-                    "true"
-                );
-
-
-                initCasinoUI();
-
-
-            }
-            else{
-
-
-                localStorage.setItem(
-                    "MG_ENABLED",
-                    "false"
-                );
-
-
-                $("#mg-casino-root")
-                .remove();
-
-
-            }
-
+            initCasinoUI();
 
         }
-    );
+        else{
+
+            document
+            .querySelector(
+                "#mg-root"
+            )
+            ?.remove();
+
+        }
+
+
+    };
 
 
 }
@@ -191,11 +173,21 @@ id="mg-toggle-orb">
 
 
 
-
 jQuery(()=>{
 
 
-    initExtensionSettings();
+    loadSettings();
+
+
+    createExtensionSetting();
+
+
+
+    if(settings.showOrb){
+
+        initCasinoUI();
+
+    }
 
 
 });
