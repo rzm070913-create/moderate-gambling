@@ -1,3 +1,11 @@
+#mg-root{
+
+pointer-events:none;
+
+}
+
+
+
 #mg-orb{
 
 position:fixed;
@@ -6,15 +14,25 @@ right:30px;
 
 bottom:120px;
 
+
 width:64px;
 
 height:64px;
 
+
 z-index:99999;
+
+
+pointer-events:auto;
+
 
 touch-action:none;
 
+
+cursor:pointer;
+
 }
+
 
 
 #mg-orb img{
@@ -23,31 +41,55 @@ width:100%;
 
 height:100%;
 
+
+pointer-events:none;
+
 }
 
 
 
-#mg-window{
+
+#mg-panel{
+
 
 position:fixed;
+
 
 right:40px;
 
 bottom:120px;
 
+
 width:360px;
+
 
 background:#111;
 
-border:2px solid #d4af37;
+
+border:
+
+2px solid #d4af37;
+
 
 border-radius:20px;
 
+
 padding:20px;
+
 
 color:white;
 
+
 z-index:99998;
+
+
+pointer-events:auto;
+
+
+box-shadow:
+
+0 0 25px rgba(212,175,55,.5);
+
 
 }
 
@@ -55,13 +97,18 @@ z-index:99998;
 
 .mg-header{
 
+
 display:flex;
+
 
 justify-content:space-between;
 
+
 font-size:22px;
 
+
 color:#ffd700;
+
 
 }
 
@@ -69,13 +116,18 @@ color:#ffd700;
 
 .mg-header button{
 
+
 background:none;
+
+
+border:none;
+
 
 color:white;
 
-border:0;
 
 font-size:24px;
+
 
 }
 
@@ -83,40 +135,89 @@ font-size:24px;
 
 .mg-chip{
 
-font-size:32px;
 
 text-align:center;
 
+
+font-size:32px;
+
+
 color:#ffd700;
+
 
 margin:20px;
 
+
 }
 
 
 
-.mg-menu{
+.mg-games{
+
 
 display:grid;
 
+
 grid-template-columns:1fr 1fr;
 
+
 gap:10px;
+
 
 }
 
 
 
-.mg-menu button{
+.mg-games button{
+
 
 height:70px;
 
+
 background:#222;
 
-border:1px solid #d4af37;
+
+border:
+
+1px solid #d4af37;
+
 
 color:white;
 
+
 border-radius:10px;
+
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+#mg-panel{
+
+
+right:5%;
+
+
+width:90%;
+
+
+}
+
+
+
+#mg-orb{
+
+
+width:55px;
+
+height:55px;
+
+
+}
+
 
 }
