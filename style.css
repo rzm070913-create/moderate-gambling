@@ -1,64 +1,135 @@
+/* =================================
+   SILLY CASINO UI
+   Full Style
+================================= */
+
+
+
+/* 总容器 */
+
 #mg-root{
 
     position:fixed;
 
     inset:0;
 
-    pointer-events:none;
+    z-index:9999999;
 
-    z-index:999999;
+    pointer-events:none;
 
 }
 
 
+
+
+
+/* 悬浮图标 */
+
 #mg-orb{
+
     position:fixed;
+
     right:30px;
+
     bottom:120px;
 
-    width:70px;
-    height:70px;
 
-    z-index:999999;
+    width:75px;
+
+    height:75px;
+
+
+    z-index:10000000;
+
 
     pointer-events:auto;
 
+
     touch-action:none;
+
+
+    cursor:pointer;
+
 }
+
 
 
 #mg-orb img{
+
     width:100%;
+
     height:100%;
+
+
+    display:block;
+
 }
 
 
 
 
+
+
+
+/* 赌场窗口 */
+
 #mg-panel{
 
-    position:fixed;
 
-    left:50%;
-    top:50%;
+    position:fixed !important;
 
-    transform:translate(-50%,-50%);
+
+    left:50% !important;
+
+    top:50% !important;
+
+
+    transform:translate(-50%,-50%) !important;
+
 
 
     width:1000px;
+
+
     height:700px;
 
 
+
     max-width:95vw;
+
+
     max-height:90vh;
 
 
+
+    z-index:10000001 !important;
+
+
+
+    pointer-events:auto;
+
+
+
+    overflow:hidden;
+
+
+
+    color:white;
+
+
+
     background:
+
     linear-gradient(
+
         145deg,
-        #1b0b05,
-        #080808
+
+        #210b05,
+
+        #050505
+
     );
+
 
 
     border:
@@ -66,21 +137,18 @@
     3px solid #d4af37;
 
 
+
     border-radius:25px;
 
-
-    overflow:hidden;
-
-
-    color:white;
-
-
-    pointer-events:auto;
 
 
     box-shadow:
 
-    0 0 50px rgba(212,175,55,.5);
+    0 0 60px
+
+    rgba(212,175,55,.6);
+
+
 
 }
 
@@ -88,63 +156,120 @@
 
 
 
-/* 标题 */
+
+
+/* 标题栏 */
 
 .casino-header{
 
-    height:80px;
+
+    height:85px;
+
 
 
     display:flex;
 
+
+
     justify-content:center;
 
+
+
     align-items:center;
+
 
 
     position:relative;
 
 
+
     background:
 
+
     linear-gradient(
+
         90deg,
-        #420c08,
-        #8b1c1c
+
+        #430b08,
+
+        #7c1717
+
     );
 
 
+
+    border-bottom:
+
+    2px solid #d4af37;
+
+
 }
 
 
-.casino-header div{
 
-    font-size:40px;
+.casino-name{
+
+
+    font-size:42px;
+
 
     color:#ffd700;
 
+
     font-family:serif;
 
+
+    font-weight:bold;
+
+
+
 }
+
+
 
 
 
 #mg-close{
 
+
     position:absolute;
+
+
 
     right:25px;
 
 
-    font-size:38px;
+
+    top:15px;
 
 
-    background:none;
+
+    width:50px;
+
+
+    height:50px;
+
+
 
     border:none;
 
 
+
+    background:none;
+
+
+
     color:white;
+
+
+
+    font-size:40px;
+
+
+
+    cursor:pointer;
+
+
 
 }
 
@@ -152,7 +277,11 @@
 
 
 
-/* 顶部游戏栏 */
+
+
+
+
+/* 游戏导航栏 */
 
 .casino-games{
 
@@ -160,22 +289,34 @@
     height:120px;
 
 
+
     display:flex;
+
 
 
     align-items:center;
 
 
+
     justify-content:center;
+
 
 
     gap:15px;
 
 
-    background:#090909;
-
 
     padding:10px;
+
+
+
+    background:#080808;
+
+
+
+    position:relative;
+
+
 
 }
 
@@ -186,18 +327,16 @@
 .casino-games button{
 
 
-    width:130px;
-
-    height:70px;
+    width:140px;
 
 
-    background:
 
-    linear-gradient(
-        145deg,
-        #3a250c,
-        #151007
-    );
+    height:75px;
+
+
+
+    border-radius:15px;
+
 
 
     border:
@@ -205,13 +344,33 @@
     2px solid #d4af37;
 
 
-    border-radius:15px;
+
+    background:
+
+
+    linear-gradient(
+
+        145deg,
+
+        #4a2d0b,
+
+        #160e05
+
+    );
+
 
 
     color:#ffd700;
 
 
+
     font-size:22px;
+
+
+
+    cursor:pointer;
+
+
 
 }
 
@@ -219,7 +378,10 @@
 
 
 
-/* 玩家放中间 */
+
+
+
+/* 玩家中心 */
 
 .casino-user{
 
@@ -227,28 +389,55 @@
     position:absolute;
 
 
-    top:125px;
-
 
     left:50%;
+
+
+
+    top:10px;
+
 
 
     transform:translateX(-50%);
 
 
+
+    display:flex;
+
+
+
+    flex-direction:column;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
     z-index:5;
 
 
-    text-align:center;
+
+    pointer-events:none;
+
 
 
 }
 
 
 
+
+
 .casino-avatar{
 
-    font-size:45px;
+
+    font-size:42px;
+
+
 
 }
 
@@ -256,7 +445,13 @@
 
 .casino-username{
 
+
     font-size:20px;
+
+
+    font-weight:bold;
+
+
 
 }
 
@@ -264,9 +459,21 @@
 
 .casino-chip{
 
+
+    margin-top:3px;
+
+
     color:#ffd700;
 
-    font-size:25px;
+
+
+    font-size:24px;
+
+
+
+    font-weight:bold;
+
+
 
 }
 
@@ -274,7 +481,9 @@
 
 
 
-/* 游戏展示 */
+
+
+/* 游戏展示区 */
 
 .casino-main{
 
@@ -282,36 +491,50 @@
     height:390px;
 
 
+
     margin:20px;
+
+
+
+    border-radius:20px;
+
 
 
     border:
 
-    2px solid #405b45;
+    2px solid #44604d;
 
-
-    border-radius:15px;
 
 
     background:
 
-    linear-gradient(
-        145deg,
-        #07150f,
-        #020806
+
+    radial-gradient(
+
+        circle,
+
+        #12351f,
+
+        #04100a
+
     );
+
 
 
     display:flex;
 
 
-    align-items:center;
+
+    flex-direction:column;
+
 
 
     justify-content:center;
 
 
-    flex-direction:column;
+
+    align-items:center;
+
 
 
 }
@@ -319,7 +542,42 @@
 
 
 
-/* 底部 */
+
+.casino-main h2{
+
+
+    font-size:40px;
+
+
+    color:#ffd700;
+
+
+
+}
+
+
+
+.casino-main p{
+
+
+    font-size:20px;
+
+
+    color:#ddd;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* 底部功能 */
 
 .casino-extra{
 
@@ -327,40 +585,73 @@
     height:100px;
 
 
+
     display:grid;
 
 
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
 
 
     gap:15px;
 
 
+
     padding:15px;
 
 
+
 }
+
+
 
 
 
 .casino-extra button{
 
 
-    background:#251508;
+    height:65px;
+
+
+
+    border-radius:15px;
+
 
 
     border:
 
-    1px solid #d4af37;
+    2px solid #d4af37;
 
 
-    border-radius:12px;
+
+    background:
+
+
+    linear-gradient(
+
+        145deg,
+
+        #30200b,
+
+        #100903
+
+    );
+
 
 
     color:white;
 
 
+
     font-size:20px;
+
+
+
+    cursor:pointer;
+
 
 
 }
@@ -368,14 +659,75 @@
 
 
 
+
+
+
+
+
+/* 防止 ST 其他层覆盖 */
+
+#mg-root,
+#mg-panel,
+#mg-orb{
+
+    isolation:isolate;
+
+}
+
+
+
+
+
+
+
+/* 手机 */
+
 @media(max-width:700px){
+
+
+
+#mg-orb{
+
+
+    width:55px;
+
+    height:55px;
+
+
+    right:15px;
+
+
+    bottom:100px;
+
+
+
+}
+
+
 
 
 #mg-panel{
 
+
     width:95vw;
 
+
     height:85vh;
+
+
+
+}
+
+
+
+
+
+.casino-name{
+
+
+    font-size:25px;
+
+
 
 }
 
@@ -383,7 +735,10 @@
 
 .casino-games{
 
+
     gap:5px;
+
+
 
 }
 
@@ -391,11 +746,39 @@
 
 .casino-games button{
 
+
     width:auto;
+
 
     flex:1;
 
+
     font-size:14px;
+
+
+
+}
+
+
+
+.casino-main{
+
+
+    height:300px;
+
+
+}
+
+
+
+.casino-extra{
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
 
 }
 
