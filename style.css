@@ -137,3 +137,177 @@ cursor:grabbing;
 transform:scale(1.05);
 
 }
+
+.casino-inner{
+
+width:100%;
+
+height:100%;
+
+min-height:0;
+
+display:flex;
+
+}
+
+
+.casino-bg{
+
+    width:100%;
+
+    height:100%;
+
+    min-height:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+
+
+/* 顶部五格 */
+
+.casino-top{
+
+    flex:0 0 180px;
+
+    height:180px;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    align-items:center;
+
+    justify-items:center;
+
+}
+
+
+
+/* 按钮 */
+
+.casino-item{
+
+    width:120px;
+    height:70px;
+
+    background:#444;
+
+    border:2px solid #aaa;
+
+    border-radius:10px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    color:white;
+
+    font-size:16px;
+
+
+    padding:0;
+
+}
+
+
+
+/* 删除伪元素 */
+
+.casino-item::after{
+
+    display:none;
+
+}
+
+
+
+/* 玩家 */
+
+.casino-player{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+
+.player-avatar-frame{
+
+    width:100px;
+
+    height:100px;
+
+    background:#333;
+
+}
+
+
+
+.player-avatar{
+
+    display:none;
+
+}
+
+
+
+/* 中间 */
+
+.casino-stage{
+
+    flex:1;
+
+    min-height:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+
+.casino-message{
+
+    font-size:30px;
+
+}
+
+
+
+/* 底部 */
+
+.casino-bottom{
+
+    flex:0 0 130px;
+
+    height:130px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    align-items:center;
+
+    justify-items:center;
+
+}
+
