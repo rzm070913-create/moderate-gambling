@@ -150,11 +150,19 @@ const game=
 btn.dataset.game;
 
 
+if(game==="setting"){
+
+openCasinoSettings(root);
+
+return;
+
+}
+
+
 root.querySelector(
 ".casino-message"
 ).textContent=
 game+" 模块开发中";
-
 
 });
 
@@ -211,5 +219,132 @@ e
 
 }
 
+function openCasinoSettings(root){
 
+
+const context =
+SillyTavern.getContext();
+
+
+const settings =
+context.extensionSettings["silly-casino"];
+
+
+
+const box=document.createElement("div");
+
+
+box.className="casino-settings-panel";
+
+
+box.innerHTML=`
+
+<h2>
+CASINO SETTINGS
+</h2>
+
+
+
+<label>
+
+昵称
+
+<input 
+id="casino-name"
+value="${settings.customName||""}"
+>
+
+</label>
+
+
+
+<label>
+
+头像URL
+
+<input 
+id="casino-avatar"
+value="${settings.customAvatar||""}"
+>
+
+</label>
+
+
+
+<label>
+
+API地址
+
+<input 
+id="casino-api"
+value="${settings.apiUrl||""}"
+placeholder="https://api.xxx.com/v1/chat/completions"
+>
+
+</label>
+
+
+
+<label>
+
+API Key
+
+<input 
+id="casino-key"
+type="password"
+value="${settings.apiKey||""}"
+>
+
+</label>
+
+
+
+<button id="casino-save">
+
+保存
+
+</button>
+
+
+`;
+
+
+root.querySelector(
+".casino-stage"
+)
+.appendChild(box);
+
+
+
+box.querySelector("#casino-save")
+.onclick=()=>{
+
+
+settings.customName =
+box.querySelector("#casino-name").value;
+
+
+settings.customAvatar =
+box.querySelector("#casino-avatar").value;
+
+
+settings.apiUrl =
+box.querySelector("#casino-api").value;
+
+
+settings.apiKey =
+box.querySelector("#casino-key").value;
+
+
+
+context.saveSettingsDebounced();
+
+
+box.remove();
+
+
+};
+
+
+}
 }
