@@ -120,7 +120,13 @@ src=""
 
 loadUserAvatar(root);
 
+const closeBtn=root.querySelector(".casino-close");
 
+closeBtn.onclick=()=>{
+
+root.closest(".casino-panel").classList.remove("show");
+
+};
 
 root.querySelectorAll(".casino-item")
 .forEach(btn=>{
