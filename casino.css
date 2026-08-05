@@ -135,14 +135,8 @@ margin-bottom:5px;
 
 
 width:150px;
-
 height:150px;
-
-height:clamp(
-100px,
-14vw,
-180px
-);
+}
 
 
 background:url(
