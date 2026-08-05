@@ -39,7 +39,8 @@ const orb=root.querySelector(".casino-orb");
 
 const panel=root.querySelector(".casino-panel");
 
-
+let orbDrag = null;
+let suppressOrbClick = false;
 
 orb.addEventListener("click",()=>{
 
