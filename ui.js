@@ -1,8 +1,4 @@
-
-import { casinoConfig } from "./config.js";
-
-
-export function createCasinoUI(){
+export function createCasinoUI(settings){
 
 
 const root=document.createElement("div");
@@ -77,8 +73,8 @@ orb.style.bottom="auto";
     
 function updateOrbVisibility(){
 
-    if(casinoConfig.showOrb){
-
+  if(settings.showOrb){
+    
         orb.style.display="block";
 
     }else{
