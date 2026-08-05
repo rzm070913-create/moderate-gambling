@@ -314,57 +314,88 @@ z-index:1;
 
 position:absolute;
 
-right:15px;
+right:20px;
 
-top:15px;
+top:20px;
 
-width:42px;
 
-height:42px;
+width:48px;
 
-font-size:26px;
+height:48px;
 
-line-height:42px;
 
-border:2px solid #f1c75b;
+border-radius:50%;
+
+
 background:
-radial-gradient(circle,#d6a441,#5a3000);
 
-color:white;
+radial-gradient(
+circle,
+#ffffff 0%,
+#eeeeee 45%,
+#222 46%,
+#000 100%
+);
 
-font-size:36px;
+
+border:
+
+3px dashed #777;
+
+
+color:#000;
+
+
+font-size:28px;
+
 
 font-family:Georgia,serif;
 
-line-height:60px;
 
-text-align:center;
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 
 padding:0;
 
+
 cursor:pointer;
+
 
 z-index:999;
 
+
 box-shadow:
-0 0 20px rgba(255,200,80,.8);
+
+0 0 10px rgba(255,255,255,.4),
+
+inset 0 0 8px #000;
+
+
+transition:.25s;
 
 }
-
 .casino-close:hover{
 
-transform:scale(1.1);
+transform:rotate(20deg) scale(1.15);
+
 
 box-shadow:
-0 0 18px #ff5de9;
+
+0 0 20px white,
+
+0 0 40px rgba(255,255,255,.6);
 
 }
 
 .casino-item{
 
-width:155px;
+width:180px;
 
-height:155px;
+height:180px;
 
 background:transparent;
 
@@ -372,13 +403,15 @@ border:none;
 
 padding:0;
 
-cursor:pointer;
+margin:0;
 
 display:flex;
 
 align-items:center;
 
 justify-content:center;
+
+cursor:pointer;
 
 }
 
@@ -391,7 +424,10 @@ height:100%;
 
 object-fit:contain;
 
-transition:.2s;
+transition:.25s;
+
+filter:
+drop-shadow(0 0 8px rgba(255,80,220,.45));
 
 }
 
@@ -402,7 +438,7 @@ transform:scale(1.12);
 
 filter:
 drop-shadow(0 0 15px #ff5de9)
-drop-shadow(0 0 30px #ff5de9);
+drop-shadow(0 0 35px #ff5de9);
 
 }
 }
