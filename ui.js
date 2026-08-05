@@ -1,3 +1,5 @@
+import { createCasinoUI } from "./casino-ui.js";
+
 export function createCasinoUI(settings){
 
 
@@ -17,12 +19,7 @@ aria-label="SILLY CASINO">
 
 <div class="casino-panel">
 
-<div class="casino-window">
-
-SILLY CASINO
-
-</div>
-
+<div class="casino-window"></div>
 </div>
 
 
@@ -91,7 +88,8 @@ updateOrbVisibility();
 
     
 const panel=root.querySelector(".casino-panel");
-
+    
+let casinoUI = null;
 let orbDrag = null;
 let suppressOrbClick = false;
 function clampPosition(x,y){
@@ -339,6 +337,19 @@ return;
 
 
 panel.classList.toggle("show");
+
+
+if(panel.classList.contains("show")){
+
+
+    if(!casinoUI){
+
+        casinoUI=createCasinoUI();
+
+    }
+
+
+}
 
 
 });
