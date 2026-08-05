@@ -31,7 +31,6 @@ $("body").append(`
 <div id="mg-root">
 
 
-
 <div id="mg-orb">
 
 <img src="${ICON}">
@@ -41,21 +40,15 @@ $("body").append(`
 
 
 
-
 <div id="mg-panel">
 
 
-<button id="mg-close">
 
-×
-
-</button>
+<div id="casino">
 
 
 
-
-
-<div class="casino-top">
+<div class="top">
 
 
 
@@ -78,31 +71,28 @@ $("body").append(`
 
 
 
-<div class="casino-player">
+<div class="top-item player-box">
 
 
-<div class="casino-username">
+<div class="player-name">
 
 PLAYER
 
 </div>
 
 
-
-<div class="casino-avatar">
+<div class="avatar">
 
 <img id="mg-user-avatar">
 
 </div>
 
 
+<div class="money">
 
-<div class="casino-chip">
-
-🟡1000
+1000
 
 </div>
-
 
 
 </div>
@@ -129,6 +119,7 @@ PLAYER
 
 
 
+
 </div>
 
 
@@ -136,12 +127,11 @@ PLAYER
 
 
 
-<div class="casino-main" id="game-display">
 
+<div class="game-stage" id="game-display">
 
 游戏展示区域
 
-
 </div>
 
 
@@ -149,45 +139,40 @@ PLAYER
 
 
 
-
-<div class="casino-extra">
-
+<div class="bottom">
 
 
-<button data-game="roulette">
+
+<div class="bottom-item" data-game="roulette">
 
 <img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
 
-</button>
+</div>
 
 
-
-
-<button data-game="poker">
+<div class="bottom-item" data-game="poker">
 
 <img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
 
-</button>
+</div>
 
 
-
-
-
-<button data-game="slot">
+<div class="bottom-item" data-game="slot">
 
 <img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
 
-</button>
+</div>
 
 
-
-
-
-<button data-game="dice">
+<div class="bottom-item" data-game="dice">
 
 <img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 
-</button>
+</div>
+
+
+</div>
+
 
 
 
@@ -195,6 +180,11 @@ PLAYER
 
 
 
+<button id="mg-close">
+
+×
+
+</button>
 
 
 
@@ -210,7 +200,6 @@ PLAYER
 
 let userAvatar = $("#user_avatar").attr("src");
 
-
 if(userAvatar){
 
     $("#mg-user-avatar").attr(
@@ -219,7 +208,6 @@ if(userAvatar){
     );
 
 }
-
 
 
 
@@ -258,7 +246,7 @@ $("#mg-panel").hide();
 function bindGames(){
 
 
-$(".casino-extra button")
+$(".bottom-item")
 .on(
 "click",
 function(){
