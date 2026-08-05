@@ -2,8 +2,8 @@ let orbDrag = null;
 let suppressOrbClick = false;
 
 
-export function createCasinoUI(){
 
+export function createCasinoUI(extensionPath){
     const root=document.createElement("div");
 
     root.id="silly-casino-root";
@@ -33,12 +33,11 @@ root.innerHTML=`
 <button class="casino-orb"
 type="button">
 
-<img src="./assets/casino-orb.png">
+<img src="${extensionPath}/assets/casino-orb.png">
 
 </button>
 
 `;
-
 
 
 const orb=root.querySelector(".casino-orb");
