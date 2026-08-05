@@ -362,6 +362,48 @@ panel
 
 };
 
+.casino-item{
 
+width:120px;
+
+height:120px;
+
+background:transparent;
+
+border:none;
+
+padding:0;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+.casino-item img{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+transition:.2s;
+
+}
+
+
+.casino-item:hover img{
+
+transform:scale(1.08);
+
+filter:drop-shadow(0 0 12px gold);
+
+}
 
 }
