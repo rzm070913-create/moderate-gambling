@@ -13,13 +13,12 @@ root.innerHTML=`
     <div class="casino-top">
 
 
-       <button class="casino-item" data-game="slot">
-    <div class="test-box">SLOT</div>
+<button class="casino-item" data-game="slot">
+<img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
 </button>
 
-
-      <button class="casino-item" data-game="poker">
-    <div class="test-box">POKER</div>
+<button class="casino-item" data-game="poker">
+<img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
 </button>
 
 
@@ -31,16 +30,19 @@ root.innerHTML=`
             </div>
 
 
-            <div class="player-avatar-frame">
+          <div class="player-avatar-frame">
 
+<img 
+class="avatar-frame-img"
+src="https://i.postimg.cc/prRxMs2j/IMG-7106.png"
+>
 
-                <img 
-                class="player-avatar"
-                src=""
-                >
+<img 
+class="player-avatar"
+src=""
+>
 
-
-            </div>
+</div>
 
 
             <div class="player-money">
@@ -52,12 +54,12 @@ root.innerHTML=`
 
 
 <button class="casino-item" data-game="wheel">
-    <div class="test-box">WHEEL</div>
+<img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
 </button>
 
 
 <button class="casino-item" data-game="dice">
-    <div class="test-box">DICE</div>
+<img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
 </button>
 
 
@@ -85,24 +87,21 @@ root.innerHTML=`
     <div class="casino-bottom">
 
 
-
-  <button class="casino-item" data-game="stock">
-    <div class="test-box">STOCK</div>
+<button class="casino-item" data-game="stock">
+<img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
 </button>
 
-
 <button class="casino-item" data-game="crypto">
-    <div class="test-box">CRYPTO</div>
+<img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
 </button>
 
 
 <button class="casino-item" data-game="work">
-    <div class="test-box">WORK</div>
+<img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
 </button>
 
-
 <button class="casino-item" data-game="setting">
-    <div class="test-box">SETTING</div>
+<img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 </button>
 
 
