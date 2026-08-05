@@ -191,54 +191,6 @@ display:flex;
 
 
 
-/* 按钮 */
-
-.casino-item{
-
-width:130px;
-
-height:130px;
-
-background:transparent;
-
-border:none;
-
-padding:0;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-cursor:pointer;
-
-}
-
-.casino-item img{
-
-width:100%;
-
-height:100%;
-
-object-fit:contain;
-
-transition:.2s;
-
-}
-
-
-.casino-item:hover img{
-
-transform:scale(1.08);
-
-filter:drop-shadow(0 0 12px gold);
-
-}
-
-
-
-
 /* 删除伪元素 */
 
 .casino-item::after{
@@ -267,21 +219,41 @@ filter:drop-shadow(0 0 12px gold);
 
 .player-avatar-frame{
 
-width:100px;
+width:90px;
 
-height:100px;
+height:90px;
 
 position:relative;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
 
 }
 
 
+.avatar-frame-img{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+z-index:2;
+
+}
+
 
 .player-avatar{
 
-width:80px;
+width:64px;
 
-height:80px;
+height:64px;
 
 border-radius:50%;
 
@@ -289,12 +261,9 @@ object-fit:cover;
 
 position:absolute;
 
-left:10px;
-
-top:10px;
+z-index:1;
 
 }
-
 
 
 /* 中间 */
@@ -345,18 +314,19 @@ top:10px;
 
 position:absolute;
 
-right:18px;
+right:15px;
 
-top:18px;
+top:15px;
 
-width:60px;
+width:42px;
 
-height:60px;
+height:42px;
 
-border-radius:50%;
+font-size:26px;
 
-border:3px solid #f1c75b;
+line-height:42px;
 
+border:2px solid #f1c75b;
 background:
 radial-gradient(circle,#d6a441,#5a3000);
 
@@ -383,18 +353,18 @@ box-shadow:
 
 .casino-close:hover{
 
-transform:scale(1.12) rotate(10deg);
+transform:scale(1.1);
 
 box-shadow:
-0 0 25px gold;
+0 0 18px #ff5de9;
 
 }
 
 .casino-item{
 
-width:120px;
+width:155px;
 
-height:120px;
+height:155px;
 
 background:transparent;
 
@@ -428,8 +398,11 @@ transition:.2s;
 
 .casino-item:hover img{
 
-transform:scale(1.08);
+transform:scale(1.12);
 
-filter:drop-shadow(0 0 12px gold);
+filter:
+drop-shadow(0 0 15px #ff5de9)
+drop-shadow(0 0 30px #ff5de9);
 
+}
 }
