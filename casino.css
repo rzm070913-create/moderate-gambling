@@ -3,85 +3,52 @@
 width:100%;
 height:100%;
 
-display:block;
-
 }
-
 
 
 .casino-bg{
 
 width:100%;
-
 height:100%;
 
-background:
-url(
-"https://i.postimg.cc/1XwMyGKQ/IMG-7110.png"
-);
-
-background-size:cover;
-
-background-position:center;
 
 display:flex;
 
 flex-direction:column;
 
-}
 
-
-
-
-/* 自动缩放 */
-
-
-.casino-window .casino-bg{
-
-
-transform:
-
-scale(
-min(
-calc((100vw - 48px)/1600),
-calc((100vh - 48px)/900)
-)
-);
-
+background:#111;
 
 }
 
 
 
-
-/* 顶部 */
-
+/* 顶部五格 */
 
 .casino-top{
 
-
-height:260px;
+height:180px;
 
 
 display:grid;
 
 
 grid-template-columns:
+
 repeat(5,1fr);
 
 
 align-items:center;
 
 
-padding:
-
-40px 80px 0;
+padding:20px 40px;
 
 
 box-sizing:border-box;
 
 
 }
+
 
 
 
@@ -102,22 +69,28 @@ justify-content:center;
 align-items:center;
 
 
+cursor:pointer;
+
+
 }
+
 
 
 
 .casino-item img{
 
 
-width:240px;
+width:120px;
 
-height:240px;
+height:120px;
 
 
 object-fit:contain;
 
 
 }
+
+
 
 
 
@@ -131,63 +104,61 @@ display:flex;
 
 flex-direction:column;
 
+
 align-items:center;
 
 
 }
 
 
+
 .player-name{
 
 
-color:white;
+font-size:16px;
 
-font-size:18px;
+color:white;
 
 
 }
+
 
 
 
 .player-avatar-frame{
 
 
-width:220px;
+width:100px;
 
-height:220px;
-
-
-background:url(
-"https://i.postimg.cc/prRxMs2j/IMG-7106.png"
-);
+height:100px;
 
 
-background-size:contain;
+border-radius:50%;
 
-background-repeat:no-repeat;
 
-background-position:center;
+background:#333;
 
 
 display:flex;
 
+justify-content:center;
+
 align-items:center;
 
-justify-content:center;
+
+overflow:hidden;
 
 
 }
 
 
+
 .player-avatar{
 
 
-width:110px;
+width:80px;
 
-height:110px;
-
-
-border-radius:50%;
+height:80px;
 
 
 object-fit:cover;
@@ -197,24 +168,20 @@ object-fit:cover;
 
 
 
+
 .player-money{
 
 
 color:#ffd700;
 
-font-size:18px;
-
-
-margin-top:-15px;
+font-size:16px;
 
 
 }
 
 
 
-
 /* 中间 */
-
 
 .casino-stage{
 
@@ -232,16 +199,14 @@ justify-content:center;
 }
 
 
+
+
 .casino-message{
 
 
-font-size:40px;
+font-size:28px;
 
 color:white;
-
-text-shadow:
-
-0 4px 8px black;
 
 
 }
@@ -251,26 +216,24 @@ text-shadow:
 
 /* 底部 */
 
-
 .casino-bottom{
 
 
-height:170px;
+height:120px;
 
 
 display:grid;
 
 
 grid-template-columns:
+
 repeat(4,1fr);
 
 
 align-items:center;
 
 
-padding:
-
-0 100px 30px;
+padding:0 80px 20px;
 
 
 box-sizing:border-box;
@@ -279,12 +242,13 @@ box-sizing:border-box;
 }
 
 
-.casino-bottom img{
+
+.casino-bottom .casino-item img{
 
 
-width:220px;
+width:130px;
 
-height:140px;
+height:90px;
 
 
 object-fit:contain;
