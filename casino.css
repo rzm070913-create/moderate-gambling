@@ -23,10 +23,15 @@ align-items:center;
 .casino-bg{
 
 
-width:1600px;
+width:min(1600px,90vw);
 
-height:900px;
 
+height:min(900px,90vh);
+
+
+max-width:90vw;
+
+max-height:90vh;
 
 background:
 
@@ -59,9 +64,9 @@ overflow:hidden;
 
 .casino-top{
 
+height:25%;
 
-height:260px;
-
+min-height:140px;
 
 display:grid;
 
@@ -107,9 +112,14 @@ cursor:pointer;
 .casino-item img{
 
 
-width:230px;
+width:clamp(
+90px,
+12vw,
+180px
+);
 
-height:230px;
+
+height:auto;
 
 
 object-fit:contain;
@@ -170,9 +180,18 @@ margin-bottom:5px;
 .player-avatar-frame{
 
 
-width:220px;
+width:clamp(
+100px,
+14vw,
+180px
+);
 
-height:220px;
+
+height:clamp(
+100px,
+14vw,
+180px
+);
 
 
 background:url(
@@ -255,8 +274,11 @@ align-items:center;
 
 .casino-message{
 
-
-font-size:40px;
+font-size:clamp(
+20px,
+3vw,
+36px
+);
 
 
 color:white;
@@ -274,9 +296,9 @@ text-shadow:
 
 .casino-bottom{
 
+height:18%;
 
-height:170px;
-
+min-height:100px;
 
 display:grid;
 
