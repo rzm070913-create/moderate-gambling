@@ -1,7 +1,10 @@
 {
-    "display_name": "适度赌博，赌狗万岁",
-    "loading_order": 10,
-    "type": "module",
-    "js": "index.js",
-    "css": "style.css"
+  "display_name": "SILLY CASINO",
+  "loading_order": 20,
+  "js": "index.js",
+  "css": "style.css",
+  "author": "",
+  "version": "0.1.0",
+  "auto_update": false,
+  "minimum_client_version": "1.12.0"
 }
