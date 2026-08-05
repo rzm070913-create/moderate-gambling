@@ -8,6 +8,29 @@ const casinoPlayer = {
 
 };
 
+function getCasinoName(){
+
+
+const settings =
+SillyTavern
+.getContext()
+.extensionSettings["silly-casino"]
+||
+{};
+
+
+if(settings.useSTName){
+
+return "{{user}}";
+
+}
+
+
+return settings.customName || "PLAYER";
+
+
+}
+
 export function createCasinoWindow(){
 
 
@@ -41,26 +64,7 @@ root.innerHTML=`
 ${getCasinoName()}
 </div>
 
-function getCasinoName(){
 
-
-const settings =
-SillyTavern
-.getContext()
-.extensionSettings["silly-casino"];
-
-
-if(settings.useSTName){
-
-return "{{user}}";
-
-}
-
-
-return settings.customName || "PLAYER";
-
-
-}
 
 <div class="player-avatar user_avatar"></div>
 
