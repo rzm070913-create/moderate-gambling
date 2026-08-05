@@ -37,10 +37,30 @@ root.innerHTML=`
 
         <div class="casino-player">
 
-
-           <div class="player-name">
-    ${casinoPlayer.name}
+<div class="player-name">
+${getCasinoName()}
 </div>
+
+function getCasinoName(){
+
+
+const settings =
+SillyTavern
+.getContext()
+.extensionSettings["silly-casino"];
+
+
+if(settings.useSTName){
+
+return "{{user}}";
+
+}
+
+
+return settings.customName || "PLAYER";
+
+
+}
 
 <div class="player-avatar user_avatar"></div>
 
@@ -200,6 +220,31 @@ const img=
 root.querySelector(
 ".player-avatar"
 );
+
+
+
+const settings =
+SillyTavern
+.getContext()
+.extensionSettings["silly-casino"];
+
+
+
+if(settings.useSTAvatar){
+
+
+img.src =
+context.power_user.avatar;
+
+
+}else{
+
+
+img.src =
+settings.customAvatar || "";
+
+
+}
 
 
 
