@@ -1,15 +1,7 @@
-
 .casino-bg{
 
-
-width:90vw;
-
-height:85vh;
-
-
-max-width:1600px;
-
-max-height:900px;
+width:100%;
+height:100%;
 
 
 background:
@@ -39,13 +31,13 @@ overflow:hidden;
 
 
 
-
+/* 顶部五格 */
 
 .casino-top{
 
-height:25%;
 
-min-height:140px;
+height:260px;
+
 
 display:grid;
 
@@ -57,23 +49,44 @@ repeat(5,1fr);
 align-items:center;
 
 
-padding:30px 80px 0;
+padding:40px 80px 0;
 
 
 }
 
 
+
+
+.casino-item{
+
+
+background:none;
+
+border:0;
+
+padding:0;
+
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+
+cursor:pointer;
+
+}
+
+
+
 .casino-item img{
 
 
-width:clamp(
-90px,
-12vw,
-180px
-);
+width:240px;
 
 
-height:auto;
+height:240px;
 
 
 object-fit:contain;
@@ -91,10 +104,11 @@ transition:.2s;
 
 transform:scale(1.08);
 
-
 }
 
 
+
+/* 玩家 */
 
 
 .casino-player{
@@ -109,9 +123,6 @@ flex-direction:column;
 align-items:center;
 
 
-color:white;
-
-
 }
 
 
@@ -120,7 +131,9 @@ color:white;
 .player-name{
 
 
-font-size:22px;
+font-size:18px;
+
+color:white;
 
 
 margin-bottom:5px;
@@ -130,13 +143,12 @@ margin-bottom:5px;
 
 
 
-
 .player-avatar-frame{
 
 
-width:150px;
+width:220px;
 
-height:150px;
+height:220px;
 
 
 background:url(
@@ -148,6 +160,9 @@ background-size:contain;
 
 
 background-repeat:no-repeat;
+
+
+background-position:center;
 
 
 display:flex;
@@ -162,12 +177,14 @@ align-items:center;
 }
 
 
+
+
 .player-avatar{
 
 
-width:90px;
+width:110px;
 
-height:90px;
+height:110px;
 
 
 border-radius:50%;
@@ -183,18 +200,19 @@ object-fit:cover;
 .player-money{
 
 
+font-size:18px;
+
 color:#ffd700;
 
 
-font-size:22px;
-
-
-margin-top:-10px;
+margin-top:-15px;
 
 
 }
 
 
+
+/* 中间展示区域 */
 
 
 .casino-stage{
@@ -216,14 +234,10 @@ align-items:center;
 
 
 
-
 .casino-message{
 
-font-size:clamp(
-20px,
-3vw,
-36px
-);
+
+font-size:40px;
 
 
 color:white;
@@ -231,7 +245,7 @@ color:white;
 
 text-shadow:
 
-0 5px 10px black;
+0 4px 8px black;
 
 
 }
@@ -239,23 +253,43 @@ text-shadow:
 
 
 
+/* 底部 */
+
+
 .casino-bottom{
 
-height:18%;
 
-min-height:100px;
+height:170px;
+
 
 display:grid;
 
 
 grid-template-columns:
+
 repeat(4,1fr);
+
+
+align-items:center;
 
 
 padding:0 100px 30px;
 
 
-align-items:center;
+}
+
+
+
+.casino-bottom .casino-item img{
+
+
+width:220px;
+
+
+height:140px;
+
+
+object-fit:contain;
 
 
 }
