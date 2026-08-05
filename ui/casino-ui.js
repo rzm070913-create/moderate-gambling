@@ -21,7 +21,7 @@ export function createCasinoWindow() {
     root.className = "casino-inner";
     root.innerHTML = `
         <div class="casino-bg">
-        <div class="casino-stage"></div>
+     
             <button class="casino-close">♠</button>
             <div class="casino-top">
                 <button class="casino-item" data-game="slot">
@@ -116,7 +116,7 @@ game
 
 
 });
-    });
+   
 
     return root;
 }
