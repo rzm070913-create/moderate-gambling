@@ -3,15 +3,12 @@ const ICON =
 
 
 let dragging = false;
-
 let moved = false;
 
 let startX = 0;
-
 let startY = 0;
 
 let originX = 0;
-
 let originY = 0;
 
 
@@ -19,9 +16,244 @@ let originY = 0;
 export function createCasinoUI(){
 
 
-    if(document.querySelector("#mg-root")){
-        return;
-    }
+if(document.querySelector("#mg-root")){
+return;
+}
+
+
+
+$("head").append(`
+
+<style>
+
+#mg-panel{
+
+width:1600px;
+height:900px;
+
+position:fixed;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
+
+background:url("https://i.postimg.cc/1XwMyGKQ/IMG-7110.png");
+
+background-size:100% 100%;
+
+z-index:999999;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+
+
+#mg-panel *{
+
+box-sizing:border-box;
+
+}
+
+
+
+.casino-header{
+
+height:50px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:10px 30px;
+
+color:white;
+
+font-size:28px;
+
+}
+
+
+
+#mg-close{
+
+font-size:30px;
+
+background:none;
+
+border:0;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+
+.casino-top{
+
+height:260px;
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+align-items:center;
+
+padding:40px 80px 0;
+
+}
+
+
+
+.casino-top img{
+
+width:240px;
+
+height:240px;
+
+object-fit:contain;
+
+}
+
+
+
+.casino-player{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+color:white;
+
+}
+
+
+
+.casino-avatar{
+
+width:220px;
+
+height:220px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+
+
+.casino-avatar img{
+
+width:220px;
+
+height:220px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+}
+
+
+
+.casino-money{
+
+color:#ffd700;
+
+font-size:20px;
+
+}
+
+
+
+.casino-stage{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:40px;
+
+color:white;
+
+text-shadow:0 4px 8px black;
+
+}
+
+
+
+.casino-bottom{
+
+height:170px;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+align-items:center;
+
+padding:0 100px 30px;
+
+}
+
+
+
+.casino-bottom img{
+
+width:220px;
+
+height:140px;
+
+object-fit:contain;
+
+cursor:pointer;
+
+}
+
+
+
+#mg-orb{
+
+position:fixed;
+
+z-index:9999999;
+
+cursor:pointer;
+
+}
+
+
+
+#mg-orb img{
+
+width:70px;
+
+height:70px;
+
+}
+
+
+</style>
+
+`);
+
+
 
 
 
@@ -39,27 +271,18 @@ $("body").append(`
 
 
 
-
 <div id="mg-panel">
-
-
-
 
 
 <div class="casino-header">
 
-
-<div class="casino-name">
-
-🎰 SILLY CASINO
-
+<div>
+SILLY CASINO
 </div>
 
 
 <button id="mg-close">
-
 ×
-
 </button>
 
 
@@ -68,32 +291,29 @@ $("body").append(`
 
 
 
-
-
-<div class="casino-games">
-
-
-
-<button data-game="roulette">
-
-🎡轮盘
-
-</button>
+<div class="casino-top">
 
 
 
-<button data-game="poker">
+<div>
+<img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
+</div>
 
-🃏扑克
 
-</button>
+
+<div>
+<img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
+</div>
 
 
 
 
+<div class="casino-player">
 
 
-<div class="casino-user">
+<div>
+PLAYER
+</div>
 
 
 <div class="casino-avatar">
@@ -103,18 +323,7 @@ $("body").append(`
 </div>
 
 
-
-<div>
-
-
-<div class="casino-username">
-
-PLAYER
-
-</div>
-
-
-<div class="casino-chip">
+<div class="casino-money">
 
 🟡1000
 
@@ -124,26 +333,17 @@ PLAYER
 </div>
 
 
+
+
+<div>
+<img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
 </div>
 
 
 
-
-
-
-<button data-game="slot">
-
-🎰老虎机
-
-</button>
-
-
-
-<button data-game="dice">
-
-🎲骰子
-
-</button>
+<div>
+<img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
+</div>
 
 
 
@@ -153,25 +353,9 @@ PLAYER
 
 
 
+<div class="casino-stage" id="game-display">
 
-
-
-<div class="casino-main">
-
-
-<h2>
-
-游戏大厅
-
-</h2>
-
-
-<p>
-
-请选择游戏
-
-</p>
-
+游戏展示区域
 
 </div>
 
@@ -180,51 +364,39 @@ PLAYER
 
 
 
-
-<div class="casino-extra">
-
-
-<button data-game="stock">
-
-📈股票
-
-</button>
+<div class="casino-bottom">
 
 
-
-<button data-game="crypto">
-
-💎虚拟货币
-
-</button>
+<div>
+<img data-game="roulette"
+src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
+</div>
 
 
-
-<button data-game="work">
-
-🛠打工
-
-</button>
+<div>
+<img data-game="poker"
+src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
+</div>
 
 
+<div>
+<img data-game="slot"
+src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
+</div>
 
 
-<button data-game="setting">
-
-⚙设置
-
-</button>
-
+<div>
+<img data-game="dice"
+src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
+</div>
 
 
 </div>
 
 
 
-
-
-
 </div>
+
 
 
 </div>
@@ -233,21 +405,37 @@ PLAYER
 `);
 
 
-let userAvatar = $("#user_avatar").attr("src");
 
-if(userAvatar){
 
-    $("#mg-user-avatar").attr(
-        "src",
-        userAvatar
-    );
+
+
+// SillyTavern 用户头像
+
+let avatar = 
+$("#user_avatar").attr("src")
+||
+window.user_avatar
+||
+"";
+
+
+
+if(avatar){
+
+$("#mg-user-avatar")
+.attr(
+"src",
+avatar
+);
 
 }
 
 
 
-$("#mg-panel").hide();
 
+
+
+$("#mg-panel").hide();
 
 
 
@@ -260,13 +448,17 @@ bindGames();
 
 
 
+
+
 $("#mg-close").on(
 "click",
 ()=>{
 
 $("#mg-panel").hide();
 
-});
+}
+
+);
 
 
 
@@ -278,10 +470,11 @@ $("#mg-panel").hide();
 
 
 
+
 function bindGames(){
 
 
-$(".casino-games button")
+$(".casino-bottom img")
 .on(
 "click",
 function(){
@@ -299,7 +492,6 @@ $("#game-display").html(`
 ${game}
 
 </h2>
-
 
 <p>
 
@@ -322,11 +514,16 @@ ${game}
 
 
 
+
+
+
 function bindOrb(){
+
 
 
 const orb =
 document.querySelector("#mg-orb");
+
 
 
 if(!orb)return;
@@ -426,6 +623,7 @@ orb.style.bottom="auto";
 
 
 
+
 orb.addEventListener(
 "pointerup",
 ()=>{
@@ -449,6 +647,8 @@ $("#mg-panel").show();
 
 
 }
+
+
 
 
 
