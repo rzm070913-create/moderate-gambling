@@ -125,15 +125,9 @@ getSettings().showOrb=
 event.target.checked;
 
 
-
-getSettings().showOrb=
-event.target.checked;
-
-
-context.saveSettingsDebounced();
-
-
-context.saveSettingsDebounced();
+SillyTavern
+.getContext()
+.saveSettingsDebounced();
 
 
 
@@ -196,5 +190,7 @@ runtime.ui=createCasinoUI(
     context.extensionSettings[MODULE_ID]
 );
 
-    installSettingsEntry();
+installSettingsEntry();
 
+
+});
