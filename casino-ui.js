@@ -1,4 +1,4 @@
-export function createCasinoUI(){
+export function createCasinoWindow(){
 
 
 const root=document.createElement("div");
