@@ -300,20 +300,14 @@ z-index:2;
 
 .player-avatar{
 
-width:84px;
+width:100%;
+height:100%;
 
-height:84px;
+background-size:cover;
 
-border-radius:50%;
-
-object-fit:cover;
-
-position:absolute;
-
-z-index:1;
+background-position:center;
 
 }
-
 
 /* 中间 */
 
