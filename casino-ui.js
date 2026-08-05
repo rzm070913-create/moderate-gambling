@@ -170,10 +170,10 @@ SillyTavern.getContext();
 
 
 
-const avatar=
-context.user.avatar;
-
-
+const avatar =
+context.characters
+? context.characters[0]?.avatar
+: null;
 
 const img=
 root.querySelector(
