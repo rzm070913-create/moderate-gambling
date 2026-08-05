@@ -1,5 +1,3 @@
-import {openSlot}
-from "../games/slot/slot5.js";
 
 const casinoPlayer = {
     name: "{{user}}",
@@ -71,12 +69,7 @@ export function createCasinoWindow() {
     root.querySelectorAll(".casino-item").forEach((btn) => {
         btn.addEventListener("click", () => {
             const game = btn.dataset.game;
-            if(game==="slot"){
 
-    openSlot(root);
-    return;
-
-}
             if (game === "setting") {
                 openCasinoSettings(root);
                 return;
