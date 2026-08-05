@@ -155,7 +155,6 @@ display:flex;
 
 }
 
-
 .casino-bg{
 
 width:100%;
@@ -166,6 +165,9 @@ position:relative;
 
 overflow:hidden;
 
+display:flex;
+
+flex-direction:column;
 
 background:
 
@@ -349,9 +351,15 @@ height:170px;
 
 display:grid;
 
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(4,180px);
 
-padding-bottom:25px;
+justify-content:center;
+
+align-items:center;
+
+gap:40px;
+
+padding:0;
 
 }
 
@@ -460,6 +468,11 @@ cursor:pointer;
 
 }
 
+.casino-bottom .casino-item{
+
+transform:translateY(10px);
+
+}
 
 .casino-item img{
 
