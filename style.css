@@ -72,9 +72,7 @@ cursor:grabbing;
 
 .casino-panel{
 
-
 position:fixed;
-
 
 inset:0;
 
@@ -82,17 +80,29 @@ inset:0;
 display:none;
 
 
-align-items:center;
+place-items:center;
 
 
-justify-content:center;
+padding:24px;
 
 
-background:rgba(0,0,0,.5);
+background:
+
+rgba(3,6,15,.48);
+
+
+backdrop-filter:blur(5px);
 
 
 pointer-events:auto;
 
+}
+
+
+
+.casino-panel.show{
+
+display:grid;
 
 }
 
@@ -111,30 +121,29 @@ display:flex;
 
 .casino-window{
 
+
+position:relative;
+
+
 width:min(1180px, calc(100vw - 48px));
 
+
 height:min(760px, calc(100vh - 48px));
-
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-
-background:#111;
-
-
-border-radius:20px;
 
 
 overflow:hidden;
 
 
-position:relative;
+border-radius:22px;
 
-z-index:10;
+
+background:#111;
+
+
+box-shadow:
+
+0 35px 100px rgba(0,0,0,.48);
+
 
 }
 .casino-orb.is-dragging{
