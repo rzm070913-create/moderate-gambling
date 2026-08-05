@@ -1,218 +1,16 @@
-#mg-casino-window{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    z-index:999999;
-}
+#mg-root{
 
+position:fixed;
 
+inset:0;
 
-#casino{
+z-index:999999;
 
-    width:min(1600px,95vw);
-    height:min(900px,90vh);
-
-    background:url(
-    "https://i.postimg.cc/1XwMyGKQ/IMG-7110.png"
-    );
-
-    background-size:100% 100%;
-
-    display:flex;
-    flex-direction:column;
-
-    overflow:hidden;
+pointer-events:none;
 
 }
 
 
-
-
-
-.top{
-
-    height:260px;
-
-    display:grid;
-
-    grid-template-columns:repeat(5,1fr);
-
-    align-items:center;
-
-    padding:40px 80px 0;
-
-}
-
-
-
-
-
-.top-item{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-
-
-
-.top-item img{
-
-    width:240px;
-
-    height:240px;
-
-    object-fit:contain;
-
-}
-
-
-
-
-
-.player-box{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-}
-
-
-
-
-
-.player-name{
-
-    color:white;
-
-    font-size:24px;
-
-    margin-bottom:5px;
-
-}
-
-
-
-
-
-.avatar{
-
-    width:220px;
-
-    height:220px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-
-
-
-.avatar img{
-
-    width:200px;
-
-    height:200px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-}
-
-
-
-
-
-.money{
-
-    color:#ffd700;
-
-    font-size:22px;
-
-}
-
-
-
-
-
-.game-stage{
-
-    flex:1;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    font-size:40px;
-
-    text-shadow:0 4px 8px black;
-
-}
-
-
-
-
-
-.bottom{
-
-    height:170px;
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    align-items:center;
-
-    padding:0 100px 30px;
-
-}
-
-
-
-
-
-.bottom-item{
-
-    display:flex;
-
-    justify-content:center;
-
-}
-
-
-
-
-
-.bottom-item img{
-
-    width:220px;
-
-    height:140px;
-
-    object-fit:contain;
-
-}
-
-/* 悬浮球 */
 
 #mg-orb{
 
@@ -226,17 +24,17 @@ width:90px;
 
 height:90px;
 
-z-index:999999;
-
-
 cursor:pointer;
-
 
 display:flex;
 
 justify-content:center;
 
 align-items:center;
+
+pointer-events:auto;
+
+z-index:999999;
 
 
 }
@@ -251,14 +49,11 @@ height:90px;
 
 object-fit:contain;
 
-
 }
 
 
 
 
-
-/* 赌场窗口 */
 
 #mg-panel{
 
@@ -270,7 +65,272 @@ left:50%;
 
 transform:translate(-50%,-50%);
 
-
 z-index:999998;
+
+pointer-events:auto;
+
+}
+
+
+
+
+#casino{
+
+
+width:1600px;
+
+height:900px;
+
+
+background:url(
+"https://i.postimg.cc/1XwMyGKQ/IMG-7110.png"
+);
+
+
+background-size:100% 100%;
+
+
+display:flex;
+
+flex-direction:column;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+
+
+.top{
+
+
+height:260px;
+
+
+display:grid;
+
+
+grid-template-columns:
+repeat(5,1fr);
+
+
+align-items:center;
+
+
+padding:40px 80px 0;
+
+
+}
+
+
+
+
+
+.top-item{
+
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+
+}
+
+
+
+.top-item img{
+
+
+width:240px;
+
+height:240px;
+
+object-fit:contain;
+
+
+}
+
+
+
+
+
+.player-box{
+
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+
+}
+
+
+
+
+
+.player-name{
+
+
+font-size:18px;
+
+color:white;
+
+margin-bottom:5px;
+
+
+}
+
+
+
+
+
+.avatar{
+
+
+width:220px;
+
+height:220px;
+
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+
+}
+
+
+
+
+
+.avatar img{
+
+
+width:200px;
+
+height:200px;
+
+
+border-radius:50%;
+
+
+object-fit:cover;
+
+
+}
+
+
+
+
+
+.money{
+
+
+font-size:18px;
+
+color:#ffd700;
+
+margin-top:-15px;
+
+
+}
+
+
+
+
+
+.game-stage{
+
+
+flex:1;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+font-size:40px;
+
+
+color:white;
+
+
+text-shadow:
+
+0 4px 8px black;
+
+
+}
+
+
+
+
+
+.bottom{
+
+
+height:170px;
+
+
+display:grid;
+
+
+grid-template-columns:
+repeat(4,1fr);
+
+
+align-items:center;
+
+
+padding:0 100px 30px;
+
+
+}
+
+
+
+
+
+.bottom-item{
+
+
+display:flex;
+
+justify-content:center;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+
+.bottom-item img{
+
+
+width:220px;
+
+height:140px;
+
+
+object-fit:contain;
+
 
 }
