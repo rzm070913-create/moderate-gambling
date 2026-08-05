@@ -3,19 +3,30 @@ export function createCasinoUI(){
 
 const root=document.createElement("div");
 
-
 root.id="silly-casino-root";
 
 
 
-const float=document.createElement("div");
+root.innerHTML=`
+
+<button class="casino-orb"
+type="button"
+aria-label="SILLY CASINO">
+</button>
 
 
-float.id="silly-casino-float";
+<div class="casino-panel">
+
+<div class="casino-window">
+
+SILLY CASINO
+
+</div>
+
+</div>
 
 
-
-root.appendChild(float);
+`;
 
 
 
@@ -23,13 +34,31 @@ document.body.appendChild(root);
 
 
 
+const orb=root.querySelector(".casino-orb");
+
+
+const panel=root.querySelector(".casino-panel");
+
+
+
+orb.addEventListener("click",()=>{
+
+panel.classList.toggle("show");
+
+});
+
+
+
 return {
 
 root,
 
-float
+orb,
+
+panel
 
 };
+
 
 
 }
