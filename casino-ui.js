@@ -27,7 +27,7 @@ export function createCasinoWindow() {
                     <div class="player-name">${getCasinoName()}</div>
                     <div class="avatar-frame">
                         <img class="avatar-frame-img" src="https://i.postimg.cc/prRxMs2j/IMG-7106.png">
-                        <img class="player-avatar" src="">
+                       <div class="player-avatar user_avatar"></div>
                     </div>
                     <div class="player-money">🟡${casinoPlayer.chips}</div>
                 </div>
