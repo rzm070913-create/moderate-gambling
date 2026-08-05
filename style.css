@@ -492,3 +492,38 @@ filter:
 drop-shadow(0 0 5px rgba(255,80,220,.35));
 }
 }
+
+.casino-settings-panel{
+
+position:absolute;
+
+inset:100px;
+
+background:#111;
+
+border:1px solid gold;
+
+padding:30px;
+
+z-index:50;
+
+color:white;
+
+}
+
+
+.casino-settings-panel input{
+
+width:100%;
+
+margin:10px 0;
+
+background:#222;
+
+color:white;
+
+border:1px solid #777;
+
+padding:8px;
+
+}
