@@ -38,11 +38,17 @@ document.body.appendChild(root);
 
 
 
+const orb=root.querySelector(".casino-orb");
+
+const saved =
+localStorage.getItem(
+"silly-casino-orb-position"
+);
+
 
 if(saved){
 
 try{
-
 
 const pos=JSON.parse(saved);
 
@@ -58,15 +64,7 @@ orb.style.bottom="auto";
 
 }catch(e){}
 
-
 }
-
-const orb=root.querySelector(".casino-orb");
-
-const saved=
-localStorage.getItem(
-"silly-casino-orb-position"
-);
     
 function updateOrbVisibility(){
 
@@ -85,22 +83,7 @@ function updateOrbVisibility(){
 
 updateOrbVisibility();
 
-    casinoConfig.showOrb=value;
 
-
-    const orb=document.querySelector(
-        ".casino-orb"
-    );
-
-
-    if(!orb)return;
-
-
-    orb.style.display=
-        value ? "block":"none";
-
-
-}
     
 const panel=root.querySelector(".casino-panel");
 
