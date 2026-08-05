@@ -88,13 +88,13 @@ box=>{
 
 const s=randomSymbol();
 
-
 box.innerHTML=
 `
 <div class="
 slot-icon
 ${s.id}
-"></div>
+slot-spin-animation">
+</div>
 `;
 
 
