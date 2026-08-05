@@ -1,115 +1,95 @@
 .casino-inner{
-
-width:100%;
-
-height:100%;
-
-display:flex;
-
+    width:100%;
+    height:100%;
 }
 
 
 .casino-bg{
 
-width:100%;
-height:100%;
+    width:100%;
+    height:100%;
 
-display:flex;
+    display:flex;
+    flex-direction:column;
 
-flex-direction:column;
-
-background:#111;
-
-color:white;
+    background:#111;
+    color:white;
 
 }
 
 
 
+/* 顶部五格 */
 
 .casino-top{
 
-height:180px;
+    height:180px;
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(5,1fr);
 
-align-items:center;
+    align-items:center;
 
-box-sizing:border-box;
+    justify-items:center;
 
 }
 
 
+
+/* 按钮 */
 
 .casino-item{
 
-display:flex;
+    width:120px;
+    height:70px;
 
-justify-content:center;
+    background:#444;
 
-align-items:center;
+    border:2px solid #aaa;
+
+    border-radius:10px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    color:white;
+
+    font-size:16px;
+
+
+    padding:0;
 
 }
 
 
 
-.casino-item img{
-
-display:none;
-
-}
-
-
+/* 删除伪元素 */
 
 .casino-item::after{
 
-
-content:"BUTTON";
-
-
-width:120px;
-
-height:70px;
-
-
-background:#444;
-
-
-border:2px solid #aaa;
-
-
-border-radius:10px;
-
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-
-color:white;
-
-
-font-size:16px;
-
+    display:none;
 
 }
 
 
 
+/* 玩家 */
 
 .casino-player{
 
-display:flex;
+    display:flex;
 
-flex-direction:column;
+    flex-direction:column;
 
-align-items:center;
+    align-items:center;
 
-justify-content:center;
+    justify-content:center;
 
 }
 
@@ -117,13 +97,11 @@ justify-content:center;
 
 .player-avatar-frame{
 
-width:100px;
+    width:100px;
 
-height:100px;
+    height:100px;
 
-
-background:#333;
-
+    background:#333;
 
 }
 
@@ -131,21 +109,23 @@ background:#333;
 
 .player-avatar{
 
-display:none;
+    display:none;
 
 }
 
 
 
+/* 中间 */
+
 .casino-stage{
 
-flex:1;
+    flex:1;
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-justify-content:center;
+    justify-content:center;
 
 }
 
@@ -153,22 +133,24 @@ justify-content:center;
 
 .casino-message{
 
-font-size:30px;
+    font-size:30px;
 
 }
 
 
 
+/* 底部 */
+
 .casino-bottom{
 
-height:130px;
+    height:130px;
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-align-items:center;
+    align-items:center;
 
-box-sizing:border-box;
+    justify-items:center;
 
 }
