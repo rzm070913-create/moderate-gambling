@@ -135,8 +135,8 @@ margin-bottom:5px;
 
 
 width:150px;
+
 height:150px;
-}
 
 
 background:url(
@@ -155,11 +155,11 @@ display:flex;
 
 justify-content:center;
 
+
 align-items:center;
 
 
 }
-
 
 
 .player-avatar{
