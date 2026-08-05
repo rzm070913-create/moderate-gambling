@@ -1,6 +1,11 @@
 
 import { createCasinoUI } from "./ui.js";
 
+import {
+loadPlayer
+}
+from "./core/player.js";
+
 const MODULE_ID = "silly-casino";
 
 const DEFAULT_SETTINGS = {
@@ -205,6 +210,12 @@ let runtime = {
 
 
 jQuery(async()=>{
+
+
+loadPlayer();
+
+
+});
 
 
 if(runtime.initialized) return;
