@@ -1,4 +1,4 @@
-#silly-casino-root{
+.casino-content{
 
 position:fixed;
 
@@ -9,8 +9,6 @@ z-index:2147483647;
 pointer-events:none;
 
 }
-
-
 
 .casino-orb{
 
