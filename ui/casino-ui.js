@@ -1,3 +1,8 @@
+import {
+    launchGame
+} from "../games/game-manager.js";
+
+import "../games/rejister.js";
 
 const casinoPlayer = {
     name: "{{user}}",
@@ -16,6 +21,7 @@ export function createCasinoWindow() {
     root.className = "casino-inner";
     root.innerHTML = `
         <div class="casino-bg">
+        <div class="casino-stage"></div>
             <button class="casino-close">♠</button>
             <div class="casino-top">
                 <button class="casino-item" data-game="slot">
@@ -66,17 +72,50 @@ export function createCasinoWindow() {
         root.closest(".casino-panel").classList.remove("show");
     };
 
-    root.querySelectorAll(".casino-item").forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const game = btn.dataset.game;
+   root.querySelectorAll(".casino-item")
+.forEach(btn=>{
 
-            if (game === "setting") {
-                openCasinoSettings(root);
-                return;
-            }
-            root.querySelector(".casino-message").textContent =
-                game + " 模块开发中";
-        });
+
+btn.onclick=()=>{
+
+
+const game =
+btn.dataset.game;
+
+
+
+if(game==="slot"){
+
+
+const stage =
+root.querySelector(
+".casino-stage"
+);
+
+
+launchGame(
+"slot",
+stage
+);
+
+
+return;
+
+}
+
+
+
+console.log(
+"打开游戏:",
+game
+);
+
+
+
+};
+
+
+});
     });
 
     return root;
