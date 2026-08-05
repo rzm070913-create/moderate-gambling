@@ -8,6 +8,9 @@ root.className="casino-inner";
 root.innerHTML=`
 
 <div class="casino-bg">
+<button class="casino-close">
+♠
+</button>
 
 
     <div class="casino-top">
