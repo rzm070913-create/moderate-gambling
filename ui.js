@@ -333,18 +333,16 @@ panel.classList.toggle("show");
 if(panel.classList.contains("show")){
 
 
-    if(!casinoUI){
+if(!casinoUI){
 
-        casinoUI=createCasinoWindow();
-
-
-        panel
-        .querySelector(".casino-window")
-        .appendChild(casinoUI);
+    casinoUI=createCasinoWindow();
 
 
-    }
+    panel
+    .querySelector(".casino-window")
+    .appendChild(casinoUI);
 
+}
 
 }
 
