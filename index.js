@@ -218,8 +218,6 @@ loadPlayer();
 });
 
 
-if(runtime.initialized) return;
-
 
 runtime.initialized=true;
 
