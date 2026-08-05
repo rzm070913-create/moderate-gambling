@@ -1,4 +1,5 @@
-export function createCasinoUI(){
+
+export function creatimport { casinoConfig } from "./config.js";eCasinoUI(){
 
 
 const root=document.createElement("div");
@@ -61,8 +62,42 @@ orb.style.bottom="auto";
 }
 
 const orb=root.querySelector(".casino-orb");
+function updateOrbVisibility(){
+
+    if(casinoConfig.showOrb){
+
+        orb.style.display="block";
+
+    }else{
+
+        orb.style.display="none";
+
+    }
+
+}
 
 
+updateOrbVisibility();
+
+export function setCasinoOrbVisible(value){
+
+    casinoConfig.showOrb=value;
+
+
+    const orb=document.querySelector(
+        ".casino-orb"
+    );
+
+
+    if(!orb)return;
+
+
+    orb.style.display=
+        value ? "block":"none";
+
+
+}
+    
 const panel=root.querySelector(".casino-panel");
 
 let orbDrag = null;
