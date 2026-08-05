@@ -399,45 +399,6 @@ $("#game-display").html(`
 
 
 
-function bindOrb(){
-
-
-const orb=document.querySelector("#mg-orb");
-
-
-if(!orb)return;
-
-
-
-orb.addEventListener(
-"pointerdown",
-(e)=>{
-
-
-dragging=true;
-
-moved=false;
-
-
-startX=e.clientX;
-
-startY=e.clientY;
-
-
-let rect=orb.getBoundingClientRect();
-
-
-originX=rect.left;
-
-originY=rect.top;
-
-
-orb.setPointerCapture(
-e.pointerId
-);
-
-
-});
 
 
 
