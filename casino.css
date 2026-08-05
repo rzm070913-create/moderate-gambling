@@ -1,15 +1,34 @@
-.casino-bg{
+.casino-content{
 
 width:100%;
 height:100%;
 
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+/* 赌场主体 */
+
+.casino-bg{
+
+
+width:1600px;
+
+height:900px;
+
+
+max-width:none;
+
+max-height:none;
+
 
 background:
-
-linear-gradient(
-rgba(0,0,0,.25),
-rgba(0,0,0,.55)
-),
 
 url(
 "https://i.postimg.cc/1XwMyGKQ/IMG-7110.png"
@@ -24,14 +43,37 @@ display:flex;
 flex-direction:column;
 
 
-overflow:hidden;
+transform-origin:center;
 
 
 }
 
 
 
-/* 顶部五格 */
+
+/* 自动缩放 */
+
+
+.casino-window .casino-bg{
+
+
+transform:
+
+scale(
+min(
+calc((100vw - 48px)/1600),
+calc((100vh - 48px)/900)
+)
+);
+
+
+}
+
+
+
+
+/* 顶部 */
+
 
 .casino-top{
 
@@ -49,11 +91,15 @@ repeat(5,1fr);
 align-items:center;
 
 
-padding:40px 80px 0;
+padding:
+
+40px 80px 0;
+
+
+box-sizing:border-box;
 
 
 }
-
 
 
 
@@ -74,8 +120,6 @@ justify-content:center;
 align-items:center;
 
 
-cursor:pointer;
-
 }
 
 
@@ -85,24 +129,11 @@ cursor:pointer;
 
 width:240px;
 
-
 height:240px;
 
 
 object-fit:contain;
 
-
-transition:.2s;
-
-
-}
-
-
-
-.casino-item:hover img{
-
-
-transform:scale(1.08);
 
 }
 
@@ -116,9 +147,7 @@ transform:scale(1.08);
 
 display:flex;
 
-
 flex-direction:column;
-
 
 align-items:center;
 
@@ -126,17 +155,12 @@ align-items:center;
 }
 
 
-
-
 .player-name{
 
 
-font-size:18px;
-
 color:white;
 
-
-margin-bottom:5px;
+font-size:18px;
 
 
 }
@@ -158,25 +182,19 @@ background:url(
 
 background-size:contain;
 
-
 background-repeat:no-repeat;
-
 
 background-position:center;
 
 
 display:flex;
 
+align-items:center;
 
 justify-content:center;
 
 
-align-items:center;
-
-
 }
-
-
 
 
 .player-avatar{
@@ -200,9 +218,9 @@ object-fit:cover;
 .player-money{
 
 
-font-size:18px;
-
 color:#ffd700;
+
+font-size:18px;
 
 
 margin-top:-15px;
@@ -212,7 +230,8 @@ margin-top:-15px;
 
 
 
-/* 中间展示区域 */
+
+/* 中间 */
 
 
 .casino-stage{
@@ -223,15 +242,12 @@ flex:1;
 
 display:flex;
 
+align-items:center;
 
 justify-content:center;
 
 
-align-items:center;
-
-
 }
-
 
 
 .casino-message{
@@ -239,9 +255,7 @@ align-items:center;
 
 font-size:40px;
 
-
 color:white;
-
 
 text-shadow:
 
@@ -266,25 +280,27 @@ display:grid;
 
 
 grid-template-columns:
-
 repeat(4,1fr);
 
 
 align-items:center;
 
 
-padding:0 100px 30px;
+padding:
+
+0 100px 30px;
+
+
+box-sizing:border-box;
 
 
 }
 
 
-
-.casino-bottom .casino-item img{
+.casino-bottom img{
 
 
 width:220px;
-
 
 height:140px;
 
