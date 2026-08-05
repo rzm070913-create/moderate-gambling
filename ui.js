@@ -327,15 +327,6 @@ orb.addEventListener(
 ()=>{
 
 
-if(suppressOrbClick){
-
-suppressOrbClick=false;
-
-return;
-
-}
-
-
 panel.classList.toggle("show");
 
 
@@ -344,12 +335,19 @@ if(panel.classList.contains("show")){
 
     if(!casinoUI){
 
-        casinoUI=createCasinoUI();
+        casinoUI=createCasinoWindow();
+
+
+        panel
+        .querySelector(".casino-window")
+        .appendChild(casinoUI);
+
 
     }
 
 
 }
+
 
 
 });
