@@ -9,7 +9,17 @@ const DEFAULT_SETTINGS = {
 
     useSTName:true,
 
-    useSTAvatar:true
+    useSTAvatar:true,
+
+
+    customName:"",
+
+    customAvatar:"",
+
+
+    apiUrl:"",
+
+    apiKey:""
 
 };
 
