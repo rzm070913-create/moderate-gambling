@@ -17,15 +17,9 @@ justify-content:center;
 
 .casino-bg{
 
+width:100%;
 
-width:1600px;
-
-height:900px;
-
-
-max-width:none;
-
-max-height:none;
+height:100%;
 
 
 background:
@@ -35,15 +29,16 @@ url(
 );
 
 
-background-size:100% 100%;
+background-size:cover;
+
+
+background-position:center;
 
 
 display:flex;
 
+
 flex-direction:column;
-
-
-transform-origin:center;
 
 
 }
