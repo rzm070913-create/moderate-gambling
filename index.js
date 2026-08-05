@@ -48,6 +48,136 @@ runtime.ui=createCasinoUI(
     context.extensionSettings[MODULE_ID]
 );
 
+    function installSettingsEntry(){
+
+
+if(document.getElementById(
+"silly-casino-settings-entry"
+)) return;
+
+
+
+const host=document.querySelector(
+"#extensions_settings2, #extensions_settings"
+);
+
+
+if(!host) return;
+
+
+
+const entry=document.createElement("div");
+
+
+entry.id="silly-casino-settings-entry";
+
+
+entry.className="silly-casino-settings-entry";
+
+
+
+entry.innerHTML=`
+
+<div class="inline-drawer">
+
+
+<div class="inline-drawer-toggle inline-drawer-header">
+
+<b>SILLY CASINO</b>
+
+<div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+
+</div>
+
+
+
+<div class="inline-drawer-content">
+
+
+<label class="checkbox_label">
+
+
+<input 
+id="silly-casino-show-orb"
+type="checkbox"
+>
+
+
+<span>
+显示悬浮窗
+</span>
+
+
+</label>
+
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+host.appendChild(entry);
+
+
+
+const checkbox=
+entry.querySelector(
+"#silly-casino-show-orb"
+);
+
+
+
+checkbox.checked=
+getSettings().showOrb;
+
+
+
+checkbox.addEventListener(
+"change",
+event=>{
+
+
+getSettings().showOrb=
+event.target.checked;
+
+
+
+getSettings();
+
+
+context.saveSettingsDebounced();
+
+
+
+const orb=
+document.querySelector(
+".casino-orb"
+);
+
+
+
+if(orb){
+
+orb.style.display=
+event.target.checked
+?"block"
+:"none";
+
+}
+
+
+
+});
+
+
+
+}
+
 
 });
 
