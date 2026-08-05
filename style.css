@@ -2,17 +2,35 @@
 
 position:fixed;
 
+inset:0;
+
 z-index:2147483647;
 
+pointer-events:none;
+
 }
-/* SILLY CASINO 悬浮窗 */
-
-#silly-casino-float{
 
 
-width:120px;
 
-height:120px;
+.casino-orb{
+
+
+position:fixed;
+
+
+right:40px;
+
+bottom:40px;
+
+
+width:100px;
+
+height:100px;
+
+
+border:0;
+
+padding:0;
 
 
 background-image:url(
@@ -22,7 +40,9 @@ background-image:url(
 
 background-size:contain;
 
+
 background-repeat:no-repeat;
+
 
 background-position:center;
 
@@ -30,20 +50,93 @@ background-position:center;
 cursor:grab;
 
 
-user-select:none;
+pointer-events:auto;
 
 
-position:fixed;
-
-
-z-index:2147483647;
+background-color:transparent;
 
 
 }
 
 
-#silly-casino-float:active{
+
+
+.casino-orb:active{
 
 cursor:grabbing;
+
+}
+
+
+
+
+.casino-panel{
+
+
+position:fixed;
+
+
+inset:0;
+
+
+display:none;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+background:rgba(0,0,0,.5);
+
+
+pointer-events:auto;
+
+
+}
+
+
+
+.casino-panel.show{
+
+
+display:flex;
+
+
+}
+
+
+
+
+.casino-window{
+
+
+width:1600px;
+
+
+height:900px;
+
+
+background:#111;
+
+
+border-radius:20px;
+
+
+color:white;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+font-size:50px;
+
 
 }
