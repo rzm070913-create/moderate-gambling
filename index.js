@@ -81,17 +81,44 @@ entry.innerHTML=`
 
 <label class="checkbox_label">
 
-
 <input 
 id="silly-casino-show-orb"
 type="checkbox"
 >
 
-
 <span>
 显示悬浮窗
 </span>
 
+</label>
+
+
+
+<label class="checkbox_label">
+
+<input 
+id="casino-use-name"
+type="checkbox"
+>
+
+<span>
+使用酒馆用户名
+</span>
+
+</label>
+
+
+
+<label class="checkbox_label">
+
+<input 
+id="casino-use-avatar"
+type="checkbox"
+>
+
+<span>
+使用酒馆头像
+</span>
 
 </label>
 
@@ -103,7 +130,6 @@ type="checkbox"
 </div>
 
 `;
-
 
 
 host.appendChild(entry);
