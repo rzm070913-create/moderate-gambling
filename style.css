@@ -125,15 +125,18 @@ justify-content:center;
 
 background:#111;
 
+
 border-radius:20px;
+
 
 overflow:hidden;
 
 
-color:white;
+position:relative;
+
+z-index:10;
 
 }
-
 .casino-orb.is-dragging{
 
 cursor:grabbing;
