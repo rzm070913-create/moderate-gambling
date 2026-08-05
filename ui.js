@@ -53,9 +53,18 @@ try{
 const pos=JSON.parse(saved);
 
 
-orb.style.left=pos.x+"px";
+orb.style.setProperty(
+    "left",
+    pos.x+"px",
+    "important"
+);
 
-orb.style.top=pos.y+"px";
+
+orb.style.setProperty(
+    "top",
+    pos.y+"px",
+    "important"
+);
 
 orb.style.right="auto";
 
@@ -114,10 +123,18 @@ function moveOrb(x,y){
     const pos = clampPosition(x,y);
 
 
-    orb.style.left = pos.x+"px";
+    orb.style.setProperty(
+    "left",
+    pos.x+"px",
+    "important"
+);
 
-    orb.style.top = pos.y+"px";
 
+orb.style.setProperty(
+    "top",
+    pos.y+"px",
+    "important"
+);
     orb.style.right="auto";
 
     orb.style.bottom="auto";
