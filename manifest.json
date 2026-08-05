@@ -2,10 +2,10 @@
   "display_name": "SILLY CASINO",
   "loading_order": 20,
   "js": "index.js",
-  "css": [
+ "css": [
     "style.css",
     "casino.css"
-]
+],
   "author": "",
   "version": "0.1.0",
   "auto_update": false,
