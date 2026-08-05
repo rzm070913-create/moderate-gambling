@@ -2,23 +2,21 @@ const ICON =
 "https://i.postimg.cc/dVLjqnXs/IMG-7085.png";
 
 
-let dragging = false;
-let moved = false;
+let dragging=false;
+let moved=false;
 
-let startX = 0;
-let startY = 0;
+let startX=0;
+let startY=0;
 
-let originX = 0;
-let originY = 0;
+let originX=0;
+let originY=0;
 
 
 
 export function createCasinoUI(){
 
 
-if(document.querySelector("#mg-root")){
-return;
-}
+if(document.querySelector("#mg-root")) return;
 
 
 
@@ -45,52 +43,7 @@ background-size:100% 100%;
 z-index:999999;
 
 display:flex;
-
 flex-direction:column;
-
-}
-
-
-
-#mg-panel *{
-
-box-sizing:border-box;
-
-}
-
-
-
-.casino-header{
-
-height:50px;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:10px 30px;
-
-color:white;
-
-font-size:28px;
-
-}
-
-
-
-#mg-close{
-
-font-size:30px;
-
-background:none;
-
-border:0;
-
-color:white;
-
-cursor:pointer;
 
 }
 
@@ -115,7 +68,6 @@ padding:40px 80px 0;
 .casino-top img{
 
 width:240px;
-
 height:240px;
 
 object-fit:contain;
@@ -133,22 +85,6 @@ flex-direction:column;
 align-items:center;
 
 color:white;
-
-}
-
-
-
-.casino-avatar{
-
-width:220px;
-
-height:220px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
 
 }
 
@@ -228,26 +164,25 @@ cursor:pointer;
 
 
 
-#mg-orb{
+#mg-close{
 
-position:fixed;
+position:absolute;
 
-z-index:9999999;
+right:20px;
+
+top:10px;
+
+font-size:35px;
+
+background:none;
+
+border:0;
+
+color:white;
 
 cursor:pointer;
 
 }
-
-
-
-#mg-orb img{
-
-width:70px;
-
-height:70px;
-
-}
-
 
 </style>
 
@@ -258,7 +193,6 @@ height:70px;
 
 
 $("body").append(`
-
 
 <div id="mg-root">
 
@@ -274,31 +208,18 @@ $("body").append(`
 <div id="mg-panel">
 
 
-<div class="casino-header">
-
-<div>
-SILLY CASINO
-</div>
-
-
 <button id="mg-close">
 ×
 </button>
-
-
-</div>
-
 
 
 
 <div class="casino-top">
 
 
-
 <div>
 <img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
 </div>
-
 
 
 <div>
@@ -307,9 +228,7 @@ SILLY CASINO
 
 
 
-
 <div class="casino-player">
-
 
 <div>
 PLAYER
@@ -334,11 +253,9 @@ PLAYER
 
 
 
-
 <div>
 <img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
 </div>
-
 
 
 <div>
@@ -358,7 +275,6 @@ PLAYER
 游戏展示区域
 
 </div>
-
 
 
 
@@ -391,9 +307,6 @@ src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 </div>
 
 
-</div>
-
-
 
 </div>
 
@@ -401,6 +314,7 @@ src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 
 </div>
 
+</div>
 
 `);
 
@@ -408,24 +322,14 @@ src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 
 
 
-
-// SillyTavern 用户头像
-
-let avatar = 
-$("#user_avatar").attr("src")
-||
-window.user_avatar
-||
-"";
+let userAvatar=$("#user_avatar").attr("src");
 
 
+if(userAvatar){
 
-if(avatar){
-
-$("#mg-user-avatar")
-.attr(
+$("#mg-user-avatar").attr(
 "src",
-avatar
+userAvatar
 );
 
 }
@@ -433,20 +337,13 @@ avatar
 
 
 
-
-
 $("#mg-panel").hide();
-
 
 
 bindOrb();
 
 
-
 bindGames();
-
-
-
 
 
 
@@ -456,14 +353,11 @@ $("#mg-close").on(
 
 $("#mg-panel").hide();
 
-}
-
-);
+});
 
 
 
 }
-
 
 
 
@@ -480,27 +374,18 @@ $(".casino-bottom img")
 function(){
 
 
-let game =
-$(this).data("game");
-
+let game=$(this).data("game");
 
 
 $("#game-display").html(`
 
-<h2>
-
-${game}
-
-</h2>
+<h2>${game}</h2>
 
 <p>
-
-游戏模块准备中
-
+游戏展示区域
 </p>
 
 `);
-
 
 
 });
@@ -514,16 +399,10 @@ ${game}
 
 
 
-
-
-
 function bindOrb(){
 
 
-
-const orb =
-document.querySelector("#mg-orb");
-
+const orb=document.querySelector("#mg-orb");
 
 
 if(!orb)return;
@@ -545,9 +424,7 @@ startX=e.clientX;
 startY=e.clientY;
 
 
-
-const rect =
-orb.getBoundingClientRect();
+let rect=orb.getBoundingClientRect();
 
 
 originX=rect.left;
@@ -555,11 +432,9 @@ originX=rect.left;
 originY=rect.top;
 
 
-
 orb.setPointerCapture(
 e.pointerId
 );
-
 
 
 });
@@ -577,19 +452,13 @@ orb.addEventListener(
 if(!dragging)return;
 
 
+let dx=e.clientX-startX;
 
-let dx =
-e.clientX-startX;
-
-
-let dy =
-e.clientY-startY;
+let dy=e.clientY-startY;
 
 
 
-if(
-Math.sqrt(dx*dx+dy*dy)>8
-){
+if(Math.sqrt(dx*dx+dy*dy)>8){
 
 moved=true;
 
@@ -601,23 +470,16 @@ if(!moved)return;
 
 
 
-orb.style.left =
-originX+dx+"px";
+orb.style.left=originX+dx+"px";
 
-
-orb.style.top =
-originY+dy+"px";
-
+orb.style.top=originY+dy+"px";
 
 orb.style.right="auto";
 
 orb.style.bottom="auto";
 
 
-
 });
-
-
 
 
 
@@ -635,21 +497,15 @@ dragging=false;
 
 if(!moved){
 
-
 $("#mg-panel").show();
 
-
 }
-
 
 
 });
 
 
 }
-
-
-
 
 
 
