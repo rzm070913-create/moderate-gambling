@@ -15,42 +15,6 @@ function getSettings(){
 
 }
 
-let runtime = {
-    initialized:false,
-    ui:null
-};
-
-
-jQuery(async()=>{
-
-
-if(runtime.initialized) return;
-
-
-runtime.initialized=true;
-
-
-
-const context = SillyTavern.getContext();
-
-
-if(!context.extensionSettings[MODULE_ID]){
-
-    context.extensionSettings[MODULE_ID]=
-    structuredClone(DEFAULT_SETTINGS);
-
-SillyTavern.getContext()
-.saveSettingsDebounced();
-}
-
-
-
-runtime.ui=createCasinoUI(
-    context.extensionSettings[MODULE_ID]
-);
-
-    installSettingsEntry();
-
 function installSettingsEntry(){
 
 
@@ -60,10 +24,22 @@ if(document.getElementById(
 
 
 
-const host=document.querySelector(
-"#extensions_settings2, #extensions_settings"
+const host =
+document.querySelector("#extensions_settings2")
+||
+document.querySelector("#extensions_settings");
+
+
+if(!host){
+
+setTimeout(
+installSettingsEntry,
+1000
 );
 
+return;
+
+}
 
 if(!host) return;
 
@@ -150,7 +126,11 @@ event.target.checked;
 
 
 
-getSettings();
+getSettings().showOrb=
+event.target.checked;
+
+
+context.saveSettingsDebounced();
 
 
 context.saveSettingsDebounced();
@@ -180,3 +160,41 @@ event.target.checked
 
 
 }
+
+
+let runtime = {
+    initialized:false,
+    ui:null
+};
+
+
+jQuery(async()=>{
+
+
+if(runtime.initialized) return;
+
+
+runtime.initialized=true;
+
+
+
+const context = SillyTavern.getContext();
+
+
+if(!context.extensionSettings[MODULE_ID]){
+
+    context.extensionSettings[MODULE_ID]=
+    structuredClone(DEFAULT_SETTINGS);
+
+SillyTavern.getContext()
+.saveSettingsDebounced();
+}
+
+
+
+runtime.ui=createCasinoUI(
+    context.extensionSettings[MODULE_ID]
+);
+
+    installSettingsEntry();
+
