@@ -1,83 +1,101 @@
-export const SLOT_SYMBOLS = {
+export const symbols=[
 
-    peach:{
-        name:"桃子",
-        css:"peach",
-        weight:2
-    },
+{
+id:"peach",
+name:"桃子",
+rate:1000,
+weight:2
+},
 
-    cat:{
-        name:"猫",
-        css:"cat",
-        weight:10
-    },
+{
+id:"cat",
+name:"猫",
+rate:200,
+weight:10
+},
 
-    dog:{
-        name:"狗",
-        css:"dog",
-        weight:12
-    },
+{
+id:"dog",
+name:"狗",
+rate:150,
+weight:12
+},
 
-    fish:{
-        name:"鱼",
-        css:"fish",
-        weight:14
-    },
+{
+id:"fish",
+name:"鱼",
+rate:120,
+weight:14
+},
 
-    bird:{
-        name:"鸟",
-        css:"bird",
-        weight:14
-    },
+{
+id:"bird",
+name:"鸟",
+rate:100,
+weight:14
+},
 
-    mouse:{
-        name:"鼠",
-        css:"mouse",
-        weight:16
-    },
+{
+id:"mouse",
+name:"鼠",
+rate:60,
+weight:16
+},
 
-    rabbit:{
-        name:"兔",
-        css:"rabbit",
-        weight:16
-    },
+{
+id:"rabbit",
+name:"兔",
+rate:55,
+weight:16
+},
 
-    panda:{
-        name:"熊猫",
-        css:"panda",
-        weight:8
-    },
+{
+id:"panda",
+name:"熊猫",
+rate:80,
+weight:8
+},
 
-    fox:{
-        name:"狐狸",
-        css:"fox",
-        weight:8
-    },
+{
+id:"fox",
+name:"狐狸",
+rate:70,
+weight:8
+},
 
-    star:{
-        name:"星星",
-        css:"star",
-        weight:4
-    }
+{
+id:"star",
+name:"星星",
+rate:200,
+weight:4
+}
 
-};
+];
+
 
 
 export function randomSymbol(){
 
-    const list=[];
-
-    Object.values(SLOT_SYMBOLS)
-    .forEach(item=>{
-
-        for(let i=0;i<item.weight;i++)
-            list.push(item);
-
-    });
+let pool=[];
 
 
-    return list[
-        Math.floor(Math.random()*list.length)
-    ];
+symbols.forEach(
+s=>{
+
+for(
+let i=0;
+i<s.weight;
+i++
+)
+pool.push(s);
+
+});
+
+
+return pool[
+Math.floor(
+Math.random()*pool.length
+)
+];
 
 }
