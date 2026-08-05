@@ -851,3 +851,38 @@ color:#fff;
 
 }
 
+.slot-spin-animation{
+
+animation:
+
+slotSpin .15s linear;
+
+}
+
+
+@keyframes slotSpin{
+
+
+from{
+
+transform:
+
+translateY(-30px);
+
+opacity:.3;
+
+}
+
+
+to{
+
+transform:
+
+translateY(0);
+
+opacity:1;
+
+}
+
+
+}
