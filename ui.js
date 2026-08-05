@@ -5,7 +5,7 @@ export function createCasinoUI(settings){
 
 const root=document.createElement("div");
 
-root.id="silly-casino-root";
+root.className="casino-content";
 
 
 
