@@ -203,28 +203,16 @@ event.target.checked
 }
 
 
-let runtime = {
+
+
+
+const runtime = globalThis.__sillyCasinoRuntime || {
     initialized:false,
     ui:null
 };
 
 
-jQuery(async()=>{
-
-
-loadPlayer();
-
-
-});
-
-
-let runtime = window.casinoRuntime || {
-    initialized:false,
-    ui:null
-};
-
-
-window.casinoRuntime = runtime;
+globalThis.__sillyCasinoRuntime = runtime;
 
 
 
