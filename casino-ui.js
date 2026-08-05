@@ -13,15 +13,14 @@ root.innerHTML=`
     <div class="casino-top">
 
 
-        <button class="casino-item" data-game="slot">
-            <img src="https://i.postimg.cc/fRLzbqYc/IMG-7098.png">
-        </button>
+       <button class="casino-item" data-game="slot">
+    <div class="test-box">SLOT</div>
+</button>
 
 
-        <button class="casino-item" data-game="poker">
-            <img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
-        </button>
-
+      <button class="casino-item" data-game="poker">
+    <div class="test-box">POKER</div>
+</button>
 
 
         <div class="casino-player">
@@ -52,16 +51,14 @@ root.innerHTML=`
         </div>
 
 
-
-        <button class="casino-item" data-game="wheel">
-            <img src="https://i.postimg.cc/3xR8wf2B/IMG-7100.png">
-        </button>
-
+<button class="casino-item" data-game="wheel">
+    <div class="test-box">WHEEL</div>
+</button>
 
 
-        <button class="casino-item" data-game="dice">
-            <img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
-        </button>
+<button class="casino-item" data-game="dice">
+    <div class="test-box">DICE</div>
+</button>
 
 
     </div>
@@ -89,26 +86,24 @@ root.innerHTML=`
 
 
 
-        <button class="casino-item" data-game="stock">
-            <img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
-        </button>
+  <button class="casino-item" data-game="stock">
+    <div class="test-box">STOCK</div>
+</button>
 
 
-        <button class="casino-item" data-game="crypto">
-            <img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
-        </button>
+<button class="casino-item" data-game="crypto">
+    <div class="test-box">CRYPTO</div>
+</button>
 
 
-
-        <button class="casino-item" data-game="work">
-            <img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
-        </button>
-
+<button class="casino-item" data-game="work">
+    <div class="test-box">WORK</div>
+</button>
 
 
-        <button class="casino-item" data-game="setting">
-            <img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
-        </button>
+<button class="casino-item" data-game="setting">
+    <div class="test-box">SETTING</div>
+</button>
 
 
 
