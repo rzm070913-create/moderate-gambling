@@ -3,8 +3,7 @@ export function createCasinoWindow(){
 
 const root=document.createElement("div");
 
-root.className="casino-bg";
-
+root.className="casino-content";
 root.innerHTML=`
 
 <div class="casino-bg">
