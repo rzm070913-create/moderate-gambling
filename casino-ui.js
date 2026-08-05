@@ -3,8 +3,7 @@ export function createCasinoWindow(){
 
 const root=document.createElement("div");
 
-root.id="casino-overlay";
-
+root.className="casino-bg";
 
 root.innerHTML=`
 
@@ -122,10 +121,7 @@ root.innerHTML=`
 `;
 
 
-
-document.body.appendChild(root);
-
-
+return root;
 
 loadUserAvatar(root);
 
