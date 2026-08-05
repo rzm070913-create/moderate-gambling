@@ -566,49 +566,6 @@ justify-content:center;
 
 
 
-.slot-symbol{
-
-width:55px;
-
-height:55px;
-
-border-radius:50%;
-
-}
-
-
-
-.slot-symbol.peach{
-
-background:
-radial-gradient(
-circle at 30% 30%,
-#ffd1dc,
-#ff3b7a
-);
-
-}
-
-
-.slot-symbol.star{
-
-clip-path:
-polygon(
-50% 0,
-61% 35%,
-98% 35%,
-68% 57%,
-79% 100%,
-50% 75%,
-21% 100%,
-32% 57%,
-2% 35%,
-39% 35%
-);
-
-background:#ffd700;
-
-}
 /* ===================
    SLOT MACHINE
 =================== */
@@ -971,87 +928,401 @@ color:#666;
 
 
 
-/* CSS动物 */
+/* ==========================================
+   SLOT CSS CARTOON ICON
+   对应 JS:
+   <div class="slot-icon peach"></div>
+========================================== */
+
+
+.slot-icon{
+
+position:relative;
+
+display:inline-block;
+
+width:55px;
+
+height:55px;
+
+box-sizing:border-box;
+
+}
+
+
+
+.slot-icon::before,
+.slot-icon::after{
+
+content:"";
+
+position:absolute;
+
+box-sizing:border-box;
+
+}
+
+
+
+/* 桃子 */
 
 .slot-icon.peach{
 
-background:
+background:#ff8b94;
 
-radial-gradient(
-circle at 35% 30%,
-#ffd0dc,
-#ff4b85
-);
+border-radius:
+
+50% 50% 45% 45%;
+
+box-shadow:
+
+inset -6px -4px 0 rgba(224,86,109,.35);
 
 }
 
 
+.slot-icon.peach::before{
+
+width:16px;
+
+height:10px;
+
+background:#a8e6cf;
+
+border-radius:
+
+12px 0 12px 0;
+
+top:-4px;
+
+right:12px;
+
+transform:rotate(-15deg);
+
+}
+
+
+.slot-icon.peach::after{
+
+width:2px;
+
+height:24px;
+
+background:#ff6b81;
+
+top:8px;
+
+left:26px;
+
+}
+
+
+
+/* 猫 */
 
 .slot-icon.cat{
 
-background:
+background:#ffb367;
 
-radial-gradient(
-circle,
-#aaa,
-#444
-);
+border-radius:50%;
 
 }
 
 
+
+.slot-icon.cat::before{
+
+width:0;
+
+height:0;
+
+border-left:9px solid transparent;
+
+border-right:9px solid transparent;
+
+border-bottom:16px solid #ffb367;
+
+top:-8px;
+
+left:6px;
+
+transform:rotate(-15deg);
+
+box-shadow:
+
+28px 7px 0 #ffb367;
+
+}
+
+
+
+.slot-icon.cat::after{
+
+width:6px;
+
+height:6px;
+
+background:#333;
+
+border-radius:50%;
+
+top:24px;
+
+left:16px;
+
+box-shadow:
+
+22px 0 #333,
+
+11px 8px 0 -1px #ff6b81;
+
+}
+
+
+
+/* 狗 */
 
 .slot-icon.dog{
 
-background:
+background:#f4c28c;
 
-radial-gradient(
-circle,
-#d69b55,
-#704000
-);
+border-radius:50%;
 
 }
 
 
 
-.slot-icon.fish{
+.slot-icon.dog::before{
 
-background:
+width:16px;
 
-linear-gradient(
-135deg,
-#44d,
-#0ff
-);
+height:30px;
+
+background:#c68b59;
+
+border-radius:10px;
+
+top:6px;
+
+left:-2px;
+
+transform:rotate(15deg);
+
+box-shadow:
+
+48px -13px 0 #c68b59;
+
+}
+
+
+
+.slot-icon.dog::after{
+
+width:6px;
+
+height:6px;
+
+background:#3d2314;
+
+border-radius:50%;
+
+top:22px;
+
+left:18px;
+
+box-shadow:
+
+18px 0 #3d2314,
+
+9px 10px 0 2px #3d2314;
 
 }
 
 
 
-.slot-icon.star{
+/* 熊猫 */
 
-clip-path:
+.slot-icon.panda{
 
-polygon(
-50% 0,
-61% 35%,
-98% 35%,
-68% 57%,
-79% 100%,
-50% 75%,
-21% 100%,
-32% 57%,
-2% 35%,
-39% 35%
-);
+background:white;
 
+border:3px solid #2f3542;
 
-background:#ffd700;
+border-radius:50%;
 
 }
 
 
+.slot-icon.panda::before{
+
+width:16px;
+
+height:16px;
+
+background:#2f3542;
+
+border-radius:50%;
+
+top:-4px;
+
+left:-2px;
+
+box-shadow:
+
+42px 0 #2f3542;
+
+}
+
+
+.slot-icon.panda::after{
+
+width:12px;
+
+height:16px;
+
+background:#2f3542;
+
+border-radius:50%;
+
+top:18px;
+
+left:10px;
+
+transform:rotate(15deg);
+
+box-shadow:
+
+24px -6px 0 #2f3542;
+
+}
+
+
+
+/* 老鼠 */
+
+.slot-icon.mouse{
+
+background:#a4b0be;
+
+border-radius:
+
+50% 60% 50% 50%;
+
+}
+
+
+
+.slot-icon.mouse::before{
+
+width:22px;
+
+height:22px;
+
+background:#ff7882;
+
+border:4px solid #a4b0be;
+
+border-radius:50%;
+
+top:-10px;
+
+left:2px;
+
+box-shadow:
+
+24px 0 0 -4px #ff7882,
+
+24px 0 0 0 #a4b0be;
+
+}
+
+
+
+.slot-icon.mouse::after{
+
+width:5px;
+
+height:5px;
+
+background:#2f3542;
+
+border-radius:50%;
+
+top:22px;
+
+left:20px;
+
+box-shadow:
+
+-14px 2px 0 1px #ff7882;
+
+}
+
+
+
+/* 兔子 */
+
+.slot-icon.rabbit{
+
+background:#f1f2f6;
+
+border-radius:50%;
+
+margin-top:15px;
+
+}
+
+
+
+.slot-icon.rabbit::before{
+
+width:12px;
+
+height:28px;
+
+background:#ffb8c6;
+
+border:3px solid #f1f2f6;
+
+border-radius:10px;
+
+top:-22px;
+
+left:10px;
+
+transform:rotate(-10deg);
+
+box-shadow:
+
+18px 3px 0 -3px #ffb8c6,
+
+18px 3px 0 0 #f1f2f6;
+
+}
+
+
+
+.slot-icon.rabbit::after{
+
+width:6px;
+
+height:6px;
+
+background:#2f3542;
+
+border-radius:50%;
+
+top:20px;
+
+left:14px;
+
+box-shadow:
+
+22px 0 #2f3542,
+
+11px 6px 0 -1px #ff7882;
+
+}
 .slot-spin{
 
 margin-top:25px;
