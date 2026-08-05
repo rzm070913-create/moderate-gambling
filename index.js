@@ -1,3 +1,4 @@
+
 import { createCasinoUI } from "./ui.js";
 
 const MODULE_ID = "silly-casino";
@@ -38,8 +39,8 @@ if(!context.extensionSettings[MODULE_ID]){
     context.extensionSettings[MODULE_ID]=
     structuredClone(DEFAULT_SETTINGS);
 
-    context.saveSettingsDebounced();
-
+SillyTavern.getContext()
+.saveSettingsDebounced();
 }
 
 
@@ -48,7 +49,9 @@ runtime.ui=createCasinoUI(
     context.extensionSettings[MODULE_ID]
 );
 
-    function installSettingsEntry(){
+    installSettingsEntry();
+
+function installSettingsEntry(){
 
 
 if(document.getElementById(
@@ -177,8 +180,3 @@ event.target.checked
 
 
 }
-
-
-});
-
-installSettingsEntry();
