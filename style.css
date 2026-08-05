@@ -2,55 +2,47 @@
 
 position:fixed;
 
-inset:0;
-
-pointer-events:none;
-
 z-index:2147483647;
 
 }
+/* SILLY CASINO 悬浮窗 */
+
+#silly-casino-float{
 
 
+width:120px;
 
-.casino-orb{
-
-position:fixed;
-
-width:80px;
-
-height:80px;
-
-border:0;
-
-background:none;
-
-padding:0;
-
-cursor:pointer;
-
-pointer-events:auto;
-
-}
+height:120px;
 
 
+background-image:url(
+"https://i.postimg.cc/dVLjqnXs/IMG-7085.png"
+);
 
-.casino-orb img{
 
-width:100%;
+background-size:contain;
 
-height:100%;
+background-repeat:no-repeat;
 
-object-fit:contain;
+background-position:center;
+
+
+cursor:grab;
+
 
 user-select:none;
 
--webkit-user-drag:none;
+
+position:fixed;
+
+
+z-index:2147483647;
+
 
 }
 
 
-
-.casino-orb:active{
+#silly-casino-float:active{
 
 cursor:grabbing;
 
