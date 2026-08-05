@@ -22,20 +22,6 @@ weight:12
 },
 
 {
-id:"fish",
-name:"鱼",
-rate:120,
-weight:14
-},
-
-{
-id:"bird",
-name:"鸟",
-rate:100,
-weight:14
-},
-
-{
 id:"mouse",
 name:"鼠",
 rate:60,
@@ -55,20 +41,6 @@ name:"熊猫",
 rate:80,
 weight:8
 },
-
-{
-id:"fox",
-name:"狐狸",
-rate:70,
-weight:8
-},
-
-{
-id:"star",
-name:"星星",
-rate:200,
-weight:4
-}
 
 ];
 
