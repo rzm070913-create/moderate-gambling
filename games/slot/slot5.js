@@ -1,7 +1,7 @@
 import {
 randomSymbol
 }
-from "./symbols.js";
+from "./slot-symbols.js";
 
 
 
