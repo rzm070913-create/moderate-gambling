@@ -1,3 +1,13 @@
+const casinoPlayer = {
+
+    name: "{{user}}",
+
+    chips: Number(
+        localStorage.getItem("casino_chips")
+    ) || 10000,
+
+};
+
 export function createCasinoWindow(){
 
 
@@ -28,12 +38,11 @@ root.innerHTML=`
         <div class="casino-player">
 
 
-            <div class="player-name">
-                PLAYER
-            </div>
+           <div class="player-name">
+    ${casinoPlayer.name}
+</div>
 
-
-          <div class="player-avatar-frame">
+<div class="player-avatar user_avatar"></div>
 
 <img 
 class="avatar-frame-img"
@@ -48,9 +57,9 @@ src=""
 </div>
 
 
-            <div class="player-money">
-                🟡1000
-            </div>
+           <div class="player-money">
+    🟡${casinoPlayer.chips}
+</div>
 
 
         </div>
