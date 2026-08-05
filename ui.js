@@ -36,10 +36,7 @@ SILLY CASINO
 
 document.body.appendChild(root);
 
-const saved=
-localStorage.getItem(
-"silly-casino-orb-position"
-);
+
 
 
 if(saved){
@@ -65,6 +62,12 @@ orb.style.bottom="auto";
 }
 
 const orb=root.querySelector(".casino-orb");
+
+const saved=
+localStorage.getItem(
+"silly-casino-orb-position"
+);
+    
 function updateOrbVisibility(){
 
     if(casinoConfig.showOrb){
@@ -81,8 +84,6 @@ function updateOrbVisibility(){
 
 
 updateOrbVisibility();
-
-export function setCasinoOrbVisible(value){
 
     casinoConfig.showOrb=value;
 
