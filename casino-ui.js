@@ -121,8 +121,6 @@ root.innerHTML=`
 `;
 
 
-return root;
-
 loadUserAvatar(root);
 
 
