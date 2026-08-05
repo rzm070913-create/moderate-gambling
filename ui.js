@@ -12,7 +12,7 @@ export function createCasinoUI(extensionPath){
 
 
 
-    renderOrb(root);
+   renderOrb(root, extensionPath);
 
 
 
@@ -25,8 +25,7 @@ export function createCasinoUI(extensionPath){
 
 
 
-function renderOrb(root){
-
+function renderOrb(root, extensionPath){
 
 root.innerHTML=`
 
