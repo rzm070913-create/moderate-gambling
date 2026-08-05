@@ -2,17 +2,7 @@ const ICON =
 "https://i.postimg.cc/dVLjqnXs/IMG-7085.png";
 
 
-let dragging = false;
-
-let moved = false;
-
-let startX = 0;
-
-let startY = 0;
-
-let originX = 0;
-
-let originY = 0;
+let orbDrag = null;
 
 
 
@@ -27,7 +17,6 @@ export function createCasinoUI(){
 
 $("body").append(`
 
-
 <div id="mg-root">
 
 
@@ -39,9 +28,7 @@ $("body").append(`
 
 
 
-
 <div id="mg-panel">
-
 
 
 <div id="casino">
@@ -49,7 +36,6 @@ $("body").append(`
 
 
 <div class="top">
-
 
 
 <div class="top-item">
@@ -60,13 +46,11 @@ $("body").append(`
 
 
 
-
 <div class="top-item">
 
 <img src="https://i.postimg.cc/g2Jz0t3q/IMG-7099.png">
 
 </div>
-
 
 
 
@@ -90,7 +74,7 @@ PLAYER
 
 <div class="money">
 
-1000
+🟡1000
 
 </div>
 
@@ -109,8 +93,6 @@ PLAYER
 
 
 
-
-
 <div class="top-item">
 
 <img src="https://i.postimg.cc/x1CfdpLP/IMG-7101.png">
@@ -119,10 +101,7 @@ PLAYER
 
 
 
-
 </div>
-
-
 
 
 
@@ -130,7 +109,9 @@ PLAYER
 
 <div class="game-stage" id="game-display">
 
+
 游戏展示区域
+
 
 </div>
 
@@ -143,28 +124,28 @@ PLAYER
 
 
 
-<div class="bottom-item" data-game="roulette">
+<div class="bottom-item">
 
 <img src="https://i.postimg.cc/RZDMJ1Rc/IMG-7102.png">
 
 </div>
 
 
-<div class="bottom-item" data-game="poker">
+<div class="bottom-item">
 
 <img src="https://i.postimg.cc/ZqvJ8976/IMG-7103.png">
 
 </div>
 
 
-<div class="bottom-item" data-game="slot">
+<div class="bottom-item">
 
 <img src="https://i.postimg.cc/Dz47rWjY/IMG-7104.png">
 
 </div>
 
 
-<div class="bottom-item" data-game="dice">
+<div class="bottom-item">
 
 <img src="https://i.postimg.cc/DZVnB2Hp/IMG-7105.png">
 
@@ -175,39 +156,37 @@ PLAYER
 
 
 
-
 </div>
-
-
-
-<button id="mg-close">
-
-×
-
-</button>
 
 
 
 </div>
 
 
-</div>
 
+</div>
 
 `);
 
 
 
-let userAvatar = $("#user_avatar").attr("src");
+
+
+let userAvatar =
+$("#user_avatar").attr("src");
+
 
 if(userAvatar){
 
-    $("#mg-user-avatar").attr(
-        "src",
-        userAvatar
-    );
+$("#mg-user-avatar")
+.attr(
+"src",
+userAvatar
+);
 
 }
+
+
 
 
 
@@ -216,11 +195,12 @@ $("#mg-panel").hide();
 
 
 
+
 bindOrb();
 
 
-
 bindGames();
+
 
 
 
@@ -242,7 +222,6 @@ $("#mg-panel").hide();
 
 
 
-
 function bindGames(){
 
 
@@ -252,16 +231,16 @@ $(".bottom-item")
 function(){
 
 
-let game =
-$(this).data("game");
+let index =
+$(this).index();
 
 
-
-$("#game-display").html(`
+$("#game-display")
+.html(`
 
 <h2>
 
-${game}
+GAME ${index+1}
 
 </h2>
 
@@ -275,11 +254,11 @@ ${game}
 `);
 
 
-
 });
 
 
 }
+
 
 
 
@@ -290,44 +269,50 @@ ${game}
 function bindOrb(){
 
 
+const root =
+document.querySelector("#mg-root");
+
+
 const orb =
-document.querySelector("#mg-orb");
+root.querySelector("#mg-orb");
 
 
 if(!orb)return;
 
 
 
+
+
 orb.addEventListener(
 "pointerdown",
-(e)=>{
-
-
-dragging=true;
-
-moved=false;
-
-
-startX=e.clientX;
-
-startY=e.clientY;
-
+event=>{
 
 
 const rect =
 orb.getBoundingClientRect();
 
 
-originX=rect.left;
+orbDrag={
 
-originY=rect.top;
+pointerId:event.pointerId,
+
+startX:event.clientX,
+
+startY:event.clientY,
+
+originX:rect.left,
+
+originY:rect.top,
+
+moved:false
+
+};
 
 
 
-orb.setPointerCapture(
-e.pointerId
+orb.setPointerCapture?.(
+event.pointerId
 );
-
 
 
 });
@@ -337,44 +322,51 @@ e.pointerId
 
 
 
-orb.addEventListener(
+
+root.addEventListener(
 "pointermove",
-(e)=>{
+event=>{
 
 
-if(!dragging)return;
+if(
+!orbDrag ||
+event.pointerId!==orbDrag.pointerId
+)return;
 
 
 
-let dx =
-e.clientX-startX;
+const dx =
+event.clientX-orbDrag.startX;
 
 
-let dy =
-e.clientY-startY;
+const dy =
+event.clientY-orbDrag.startY;
 
 
 
 if(
-Math.sqrt(dx*dx+dy*dy)>8
+Math.hypot(dx,dy)>5
 ){
 
-moved=true;
+orbDrag.moved=true;
 
 }
 
 
 
-if(!moved)return;
+
+if(!orbDrag.moved)
+return;
+
 
 
 
 orb.style.left =
-originX+dx+"px";
+orbDrag.originX+dx+"px";
 
 
 orb.style.top =
-originY+dy+"px";
+orbDrag.originY+dy+"px";
 
 
 orb.style.right="auto";
@@ -383,6 +375,10 @@ orb.style.bottom="auto";
 
 
 
+event.preventDefault();
+
+
+
 });
 
 
@@ -391,29 +387,62 @@ orb.style.bottom="auto";
 
 
 
-orb.addEventListener(
-"pointerup",
-()=>{
+const finish =
+event=>{
 
 
-dragging=false;
+if(
+!orbDrag ||
+event.pointerId!==orbDrag.pointerId
+)
+return;
+
+
+
+
+const moved =
+orbDrag.moved;
+
+
+
+orb.releasePointerCapture?.(
+event.pointerId
+);
+
+
+
+orbDrag=null;
 
 
 
 if(!moved){
 
-
 $("#mg-panel").show();
 
-
 }
 
 
 
-});
+};
+
+
+
+
+root.addEventListener(
+"pointerup",
+finish
+);
+
+
+root.addEventListener(
+"pointercancel",
+finish
+);
+
 
 
 }
+
 
 
 
