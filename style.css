@@ -140,3 +140,11 @@ font-size:50px;
 
 
 }
+
+.casino-orb.is-dragging{
+
+cursor:grabbing;
+
+transform:scale(1.05);
+
+}
