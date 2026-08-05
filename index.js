@@ -4,7 +4,13 @@ import { createCasinoUI } from "./ui.js";
 const MODULE_ID = "silly-casino";
 
 const DEFAULT_SETTINGS = {
+
     showOrb:true,
+
+    useSTName:true,
+
+    useSTAvatar:true
+
 };
 
 function getSettings(){
