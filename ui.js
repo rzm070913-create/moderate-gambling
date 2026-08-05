@@ -1,4 +1,4 @@
-import { createCasinoWindow } from "./casino-ui.js";
+import { createCasinoWindow } from "./ui/casino-ui.js";
 
 export function createCasinoUI(settings){
 
