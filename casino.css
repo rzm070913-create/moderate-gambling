@@ -255,3 +255,34 @@ object-fit:contain;
 
 
 }
+
+.test-box{
+
+width:120px;
+
+height:80px;
+
+
+background:#444;
+
+
+border:2px solid white;
+
+
+border-radius:12px;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+color:white;
+
+
+font-size:18px;
+
+
+}
