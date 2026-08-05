@@ -2,6 +2,7 @@ import { createCasinoUI } from "./ui.js";
 
 const MODULE_ID = "silly-casino";
 
+
 let runtime = {
     initialized:false,
     ui:null
@@ -14,6 +15,14 @@ jQuery(async()=>{
 
     runtime.initialized=true;
 
-    runtime.ui=createCasinoUI();
+
+    const extensionPath =
+        `${import.meta.url.substring(
+            0,
+            import.meta.url.lastIndexOf("/")
+        )}`;
+
+
+    runtime.ui=createCasinoUI(extensionPath);
 
 });
