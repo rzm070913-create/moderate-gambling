@@ -1,5 +1,8 @@
 
-export function creatimport { casinoConfig } from "./config.js";eCasinoUI(){
+import { casinoConfig } from "./config.js";
+
+
+export function createCasinoUI(){
 
 
 const root=document.createElement("div");
