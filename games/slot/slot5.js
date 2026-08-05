@@ -1,55 +1,62 @@
 import {
 randomSymbol
-} from "./slot-symbols.js";
+}
+from "./symbols.js";
 
 
-export function openSlot(root){
+
+export function open(root){
 
 
-const stage=root.querySelector(
-".casino-stage"
-);
+root.innerHTML=`
+
+<div class="slot-window">
 
 
-stage.innerHTML=`
-
-<div class="slot-machine">
+<h2>
+🎰 五列老虎机
+</h2>
 
 
 <div class="slot-grid">
 
-${Array.from(
+${
+Array.from(
 {length:15},
 ()=>`
-<div class="slot-cell">
-<div class="slot-symbol"></div>
+
+<div class="slot-box">
+<div class="slot-icon"></div>
 </div>
+
 `
-).join("")}
+).join("")
+}
 
 
 </div>
 
 
 
-<div class="slot-info">
+<div>
 
 下注:
+
 <input 
 class="slot-bet"
 value="100"
-type="number"
 >
 
 
 <button class="slot-spin">
-开始旋转
+旋转
 </button>
 
 
-<div class="slot-result">
 </div>
 
+
+<div class="slot-result">
 
 </div>
 
@@ -59,13 +66,15 @@ type="number"
 `;
 
 
-const cells=
-stage.querySelectorAll(
-".slot-cell"
+
+const boxes =
+root.querySelectorAll(
+".slot-box"
 );
 
 
-stage.querySelector(
+
+root.querySelector(
 ".slot-spin"
 )
 .onclick=()=>{
@@ -74,17 +83,20 @@ stage.querySelector(
 let result=[];
 
 
-cells.forEach(cell=>{
+boxes.forEach(
+box=>{
 
-let s=randomSymbol();
+const s=randomSymbol();
 
-cell.innerHTML=
+
+box.innerHTML=
 `
 <div class="
-slot-symbol 
-${s.css}">
-</div>
+slot-icon
+${s.id}
+"></div>
 `;
+
 
 result.push(s);
 
@@ -92,7 +104,10 @@ result.push(s);
 });
 
 
-checkReward(result,stage);
+settle(
+result,
+root
+);
 
 
 };
@@ -102,20 +117,23 @@ checkReward(result,stage);
 
 
 
-function checkReward(result,stage){
-
-
-let names=result.map(
-x=>x.name
-);
-
+function settle(
+result,
+root
+){
 
 let count={};
 
 
-names.forEach(n=>{
-count[n]=(count[n]||0)+1;
+result.forEach(
+s=>{
+
+count[s.id]
+=
+(count[s.id]||0)+1;
+
 });
+
 
 
 let max=
@@ -125,25 +143,19 @@ Math.max(
 
 
 
-let text="未中奖";
-
-
-if(max>=5)
-text="★★★★★ 大奖";
-
-
-else if(max>=4)
-text="四连奖励";
-
-
-else if(max>=3)
-text="三连奖励";
-
-
-stage.querySelector(
+root.querySelector(
 ".slot-result"
 )
-.textContent=text;
+.textContent=
 
+max>=5
+?
+"🎉 五连大奖"
+:
+max>=3
+?
+"中奖"
+:
+"谢谢参与";
 
 }
