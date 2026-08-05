@@ -6,6 +6,14 @@ const DEFAULT_SETTINGS = {
     showOrb:true,
 };
 
+function getSettings(){
+
+    const context = SillyTavern.getContext();
+
+    return context.extensionSettings[MODULE_ID];
+
+}
+
 let runtime = {
     initialized:false,
     ui:null
@@ -42,3 +50,5 @@ runtime.ui=createCasinoUI(
 
 
 });
+
+installSettingsEntry();
