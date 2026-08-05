@@ -218,30 +218,59 @@ loadPlayer();
 });
 
 
-
-runtime.initialized=true;
-
-
-
-const context = SillyTavern.getContext();
+let runtime = window.casinoRuntime || {
+    initialized:false,
+    ui:null
+};
 
 
-if(!context.extensionSettings[MODULE_ID]){
-
-    context.extensionSettings[MODULE_ID]=
-    structuredClone(DEFAULT_SETTINGS);
-
-SillyTavern.getContext()
-.saveSettingsDebounced();
-}
+window.casinoRuntime = runtime;
 
 
 
-runtime.ui=createCasinoUI(
-    context.extensionSettings[MODULE_ID]
-);
+jQuery(async()=>{
 
-installSettingsEntry();
+
+    if(runtime.initialized){
+        console.log(
+            "SILLY CASINO already initialized"
+        );
+        return;
+    }
+
+
+    runtime.initialized=true;
+
+
+
+    loadPlayer();
+
+
+
+    const context = SillyTavern.getContext();
+
+
+
+    if(!context.extensionSettings[MODULE_ID]){
+
+        context.extensionSettings[MODULE_ID] =
+        structuredClone(DEFAULT_SETTINGS);
+
+
+        context.saveSettingsDebounced();
+
+    }
+
+
+
+    runtime.ui=createCasinoUI(
+        context.extensionSettings[MODULE_ID]
+    );
+
+
+
+    installSettingsEntry();
+
 
 
 });
