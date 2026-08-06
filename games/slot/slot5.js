@@ -162,7 +162,7 @@ export function startSpin() {
 // 绑定按钮点击事件与初始化
 export function initSlotGame() {
     buildGrid();
-    const spinBtn = document.getElementById('spinBtn');
+   const spinBtn = document.querySelector('.slot-spin');
     if (spinBtn) {
         spinBtn.onclick = startSpin;
     }
