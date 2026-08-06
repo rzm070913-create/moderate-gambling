@@ -1,3 +1,4 @@
+import { initSlotGame } from '../games/slot/slot5.js';
 import {
     launchGame
 } from "../games/game-manager.js";
