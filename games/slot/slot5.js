@@ -167,3 +167,26 @@ export function initSlotGame() {
         spinBtn.onclick = startSpin;
     }
 }
+export function open(root){
+
+    root.innerHTML = `
+
+    <div class="slot-machine-container">
+
+        <div class="grid" id="reelsContainer"></div>
+
+    </div>
+
+    <div class="controls">
+
+        <button class="slot-spin">
+            开始转动
+        </button>
+
+    </div>
+
+    `;
+
+    initSlotGame();
+
+}
